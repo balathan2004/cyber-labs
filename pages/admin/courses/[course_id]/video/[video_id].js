@@ -1,0 +1,53 @@
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import CreateComponent from "@/components/playlistCreateComponent";
+
+export default function AdminVideo({ data }) {
+  const router = useRouter();
+  const { course_id, video_id } = router.query;
+  const [isEdit, setIsEdit] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState(
+    data.videos.filter((ele) => ele.video_id == video_id)
+  );
+
+  console.log(currentVideo);
+
+  return (
+    <div>
+      <h2>Heiisjd</h2>
+      <h1>{currentVideo[0].video_id}</h1>
+      <video
+        src={currentVideo[0].video_link}
+        controls
+        poster={currentVideo[0].video_thumbnail}
+      ></video>
+      <h1>{currentVideo[0].video_caption}</h1>
+      <h1>{currentVideo[0].video_playlist}</h1>
+      <h1>{currentVideo[0].video_id}</h1>
+      <button onClick={() => setIsEdit((prev) => !prev)}>Edit</button>
+      {isEdit ? (
+        <CreateComponent
+          currentPlaylist={course_id}
+          isEditable={true}
+          video_id={video_id}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+export async function getServerSideProps(context) {
+  const playlistId = { course_id: context.query.course_id };
+  const response = await fetch("http://localhost:3000/api/single_playlist", {
+    method: "POST",
+    contentType: "application/json",
+    body: JSON.stringify(playlistId),
+  });
+
+  const res = await response.json();
+  return {
+    props: {
+      data: res.message,
+    },
+  };
+}
