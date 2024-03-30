@@ -1,7 +1,6 @@
 import Card from "@/components/card";
 import PlayList_Card from "@/components/playlist-card";
 export default function Courses({ data }) {
-  console.log(data);
   return (
     <div className="container">
       <h1>Courses</h1>
@@ -24,7 +23,7 @@ export default function Courses({ data }) {
 }
 
 export async function getServerSideProps() {
-  const apiUrl = "http://localhost:3000/api/get_playlist";
+  const apiUrl = "http://localhost:3000/api/client/get_client_playlist";
 
   const response = await fetch(apiUrl, {
     method: "GET",

@@ -3,14 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 
 export default function PlayList_Card({ playlist_data, isAdmin = true }) {
-  console.log(playlist_data);
   const url = isAdmin
     ? `/admin/courses/${playlist_data.id}`
     : `/courses/${playlist_data.id}`;
+  console.log(playlist_data);
   return (
     <a href={url}>
       <article className={style.playlist_card}>
         <div className={style.content}>
+          <img
+            src={playlist_data.data.playlist_thumbnail}
+            height={"300px"}
+            alt={playlist_data.data.playlist_thumbnail}
+          ></img>
           <h1>{playlist_data.data.playlist_name}</h1>
 
           <div className={style.namespace}>

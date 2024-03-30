@@ -18,7 +18,7 @@ export default function MainVideo({
   );
   const [mainVideoData, setMainVideoData] = useState(currentVideoFilter[0]);
   const playListName = videoData.playlist_info.playlist_name;
-  const [comment, setComment] = useState(null);
+  const [comment, setComment] = useState([]);
   const userData = useContext(UserCred);
   const commentArea = useRef();
   const [notify, setNotify] = useContext(NotificationProvider);
@@ -43,10 +43,6 @@ export default function MainVideo({
       setNotify("Comment Added");
     }
   };
-
-  useEffect(() => {
-    console.log(mainVideoData);
-  }, [mainVideoData]);
 
   return (
     <div className="container">
@@ -98,3 +94,8 @@ export default function MainVideo({
     </div>
   );
 }
+
+/*
+
+  
+*/

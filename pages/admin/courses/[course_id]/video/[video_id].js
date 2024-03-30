@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import CreateComponent from "@/components/playlistCreateComponent";
+import style from "/styles/admin.module.css";
 
 export default function AdminVideo({ data }) {
   const router = useRouter();
@@ -10,26 +11,27 @@ export default function AdminVideo({ data }) {
     data.videos.filter((ele) => ele.video_id == video_id)
   );
 
-  console.log(currentVideo);
-
   return (
-    <div>
-      <h2>Heiisjd</h2>
-      <h1>{currentVideo[0].video_id}</h1>
-      <video
-        src={currentVideo[0].video_link}
-        controls
-        poster={currentVideo[0].video_thumbnail}
-      ></video>
-      <h1>{currentVideo[0].video_caption}</h1>
-      <h1>{currentVideo[0].video_playlist}</h1>
-      <h1>{currentVideo[0].video_id}</h1>
-      <button onClick={() => setIsEdit((prev) => !prev)}>Edit</button>
+    <div className={style.admin_video}>
+      <div className={style.video_content}>
+        <h1>{currentVideo[0].video_playlist}</h1>
+
+        <video
+          src={currentVideo[0].video_link}
+          controls
+          poster={currentVideo[0].video_thumbnail}
+        ></video>
+        <h1>{currentVideo[0].video_caption}</h1>
+
+        <button onClick={() => setIsEdit((prev) => !prev)}>Edit</button>
+      </div>
+
       {isEdit ? (
         <CreateComponent
           currentPlaylist={course_id}
           isEditable={true}
           video_id={video_id}
+          existingData={currentVideo[0]}
         />
       ) : null}
     </div>

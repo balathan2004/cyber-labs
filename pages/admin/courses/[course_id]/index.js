@@ -5,13 +5,23 @@ import style from "/styles/admin.module.css";
 import PlayListVideoCard from "@/components/playlistVideoCard";
 
 import CreateComponent from "@/components/playlistCreateComponent";
+import SendData from "@/components/sendData";
 
 export default function Page({ data }) {
   const router = useRouter();
+
   const { course_id } = router.query;
   const { playlist_info, videos } = data;
+  console.log(playlist_info, videos);
   const [isCreate, setIsCreate] = useState(false);
   const [playlistVideos, setPlaylistVideos] = useState(videos ? videos : []);
+
+  const deletePlaylist = async (course_id) => {
+    const response = await SendData("/admin/delete_playlist", {
+      course_id: course_id,
+    });
+    console.log(response);
+  };
 
   return (
     <div className="container">
@@ -20,6 +30,13 @@ export default function Page({ data }) {
       <div className={style.selection}>
         <button onClick={() => setIsCreate(false)}>PlayList</button>
         <button onClick={() => setIsCreate(true)}>Create video</button>
+        <button
+          onClick={() => {
+            deletePlaylist(course_id);
+          }}
+        >
+          Delete
+        </button>
       </div>
       {isCreate ? (
         <CreateComponent currentPlaylist={course_id} />

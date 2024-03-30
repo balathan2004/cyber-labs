@@ -4,37 +4,74 @@ const fs = require("fs");
 import { firestore } from "@/config";
 import moment from "moment";
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 import { doc, addDoc, getDocs, collection } from "firebase/firestore";
 
 export default async function (req, res) {
+  post(req, res);
+}
+
+async function post(req, res) {
   try {
-    var { playlist_name } = JSON.parse(req.body);
+    let allPlaylists = [];
+    const form = new IncomingForm();
 
-    const currentTime = new Date();
-    const modifiedTime = moment(currentTime).format("DD-MMM-yyyy hh:mmA");
+    form.parse(req, async (err, fields, file) => {
+      const playlist_name = fields.playlist_name[0];
 
-    await addDoc(collection(firestore, "playlist"), {
-      playlist_info: {
-        content: "created at " + modifiedTime,
+      const fileBuffer = await saveFile(file.file[0]);
+      const fileDownloadUrl = await uploadImage(
+        fileBuffer,
+        "/video",
+        playlist_name
+      );
+
+      const playlist_data = {
+        playlist_thumbnail: fileDownloadUrl,
         playlist_name: playlist_name,
-      },
-    });
+      };
 
-    const allPlaylists = [];
-    const docRef = collection(firestore, "playlist");
-
-    const allDocs = await getDocs(docRef);
-    allDocs.docs.map((single) => {
-      allPlaylists.push({ id: single.id, data: single.data().playlist_info });
-    });
-
-    res.json({
-      message: "playlist updated",
-      authType: 200,
-      playlistName: allPlaylists,
+      allPlaylists = await docManager(playlist_data);
+      res.json({
+        message: "playlist updated",
+        authType: 200,
+        playlistName: allPlaylists,
+      });
     });
   } catch (e) {
     console.log(e);
     res.json({ message: "playlist updation error", authType: 400 });
   }
+}
+
+async function saveFile(file) {
+  const FileData = fs.readFileSync(file.filepath);
+  return FileData;
+}
+
+async function docManager(playlist_data) {
+  const currentTime = new Date();
+  const modifiedTime = moment(currentTime).format("DD-MMM-yyyy hh:mmA");
+
+  await addDoc(collection(firestore, "playlist"), {
+    playlist_info: {
+      content: "created at " + modifiedTime,
+      playlist_name: playlist_data.playlist_name,
+      playlist_thumbnail: playlist_data.playlist_thumbnail,
+    },
+  });
+
+  const allPlaylists = [];
+  const docRef = collection(firestore, "playlist");
+
+  const allDocs = await getDocs(docRef);
+  allDocs.docs.map((single) => {
+    allPlaylists.push({ id: single.id, data: single.data().playlist_info });
+  });
+  return allPlaylists;
 }

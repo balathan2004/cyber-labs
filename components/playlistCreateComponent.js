@@ -8,14 +8,15 @@ export default function CreateComponent({
   currentPlaylist,
   isEditable = false,
   video_id = false,
+  existingData = false,
 }) {
   const [image, setImage] = useState({ file: [] });
   const [showImage, setShowImage] = useState([]);
   const [video_details, setVideoDetails] = useState({
     video_id: video_id ? video_id : v4(),
-    video_caption: null,
-    video_link: null,
-    video_title: null,
+    video_caption: existingData ? existingData.video_caption : null,
+    video_link: existingData ? existingData.video_link : null,
+    video_title: existingData ? existingData.video_title : null,
     video_playlist: currentPlaylist,
   });
   const handleImage = function (event) {
@@ -66,12 +67,11 @@ export default function CreateComponent({
   return (
     <div className={style.content}>
       <form onSubmit={submitForm}>
-        <article>
-          <h1>Choose ThumbNail (Single)</h1>
-          <input type="file" onChange={handleImage} required></input>
-        </article>
+        <h1>Choose ThumbNail (Single)</h1>
+        <input type="file" onChange={handleImage} required></input>
+
         <div className={style.video_details}>
-          <div>
+          <div className={style.thumbnail}>
             <img src={showImage ? showImage : ""}></img>
           </div>
           <div className={style.video_text}>
@@ -80,18 +80,23 @@ export default function CreateComponent({
               required
               placeholder="Title"
               name="video_title"
+              value={video_details.video_title ? video_details.video_title : ""}
             ></textarea>
             <textarea
               onChange={handleText}
               required
               placeholder="Caption"
               name="video_caption"
+              value={
+                video_details.video_caption ? video_details.video_caption : ""
+              }
             ></textarea>
             <textarea
               onChange={handleText}
               required
               placeholder="Video Link"
               name="video_link"
+              value={video_details.video_link ? video_details.video_link : ""}
             ></textarea>
 
             <button>Post</button>
