@@ -10,7 +10,7 @@ export default function PlayListVideoCard({
     ? `/admin/courses/${course_id}/video/${video_data.video_id}`
     : `/courses/${course_id}/video/${video_data.video_id}`;
   return (
-    <a href={url}>
+    <a href={url} className={style.video_card}>
       <div className={style.vid}>
         <img src={video_data.video_thumbnail}></img>
         <h3 className={style.title}>{video_data.video_title}</h3>

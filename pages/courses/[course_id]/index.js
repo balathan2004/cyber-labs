@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { useRouter } from "next/router";
 import PlayListVideoCard from "@/components/playlistVideoCard";
-
+import style from "/styles/playlist.module.css";
 export default function Page({ data }) {
   console.log(data);
   const { videos, playlist_info } = data;
@@ -11,7 +11,8 @@ export default function Page({ data }) {
   const currentPlaylist = router.query.id;
   console.log(currentPlaylist);
   return (
-    <div>
+    <div className={style.playlist_videos}>
+      <h1>{playlist_info.playlist_name}</h1>
       {videos.map((x) => (
         <PlayListVideoCard
           video_data={x}

@@ -23,6 +23,7 @@ async function post(req, res) {
 
     form.parse(req, async (err, fields, file) => {
       const playlist_name = fields.playlist_name[0];
+      const playlist_description = fields.playlist_description[0];
 
       const fileBuffer = await saveFile(file.file[0]);
       const fileDownloadUrl = await uploadImage(
@@ -34,6 +35,7 @@ async function post(req, res) {
       const playlist_data = {
         playlist_thumbnail: fileDownloadUrl,
         playlist_name: playlist_name,
+        playlist_description: playlist_description,
       };
 
       allPlaylists = await docManager(playlist_data);
@@ -63,6 +65,7 @@ async function docManager(playlist_data) {
       content: "created at " + modifiedTime,
       playlist_name: playlist_data.playlist_name,
       playlist_thumbnail: playlist_data.playlist_thumbnail,
+      playlist_description: playlist_data.playlist_description,
     },
   });
 
