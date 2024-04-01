@@ -9,6 +9,7 @@ export default function AdminVideo({ playlistData }) {
   const [comments, setComments] = useState([]);
   const [changeVideoQuery, setChangeVideoQuery] = useState(video_id);
   const getComments = async (course_id, video_id) => {
+    setComments([]);
     const response = await SendData("single_playlist_comment", {
       course_id: course_id,
       video_id: video_id,
@@ -21,8 +22,9 @@ export default function AdminVideo({ playlistData }) {
     }
   };
   useEffect(() => {
-    getComments(course_id, changeVideoQuery);
+    console.log("video changed");
     router.push(`/courses/${course_id}/video/${changeVideoQuery}`);
+    getComments(course_id, changeVideoQuery);
   }, [changeVideoQuery]);
 
   return (

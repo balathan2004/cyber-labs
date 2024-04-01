@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "/styles/admin.module.css";
 import { v4 } from "uuid";
-
+import { NotificationProvider } from "@/pages/_app";
 import SendData from "@/components/sendData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function CreateComponent({
@@ -9,6 +9,7 @@ export default function CreateComponent({
   isEditable = false,
   video_id = false,
   existingData = false,
+  backToPlaylist,
 }) {
   const [image, setImage] = useState({ file: [] });
   const [showImage, setShowImage] = useState([]);
@@ -19,6 +20,7 @@ export default function CreateComponent({
     video_title: existingData ? existingData.video_title : null,
     video_playlist: currentPlaylist,
   });
+  const [notify, setNotify] = useContext(NotificationProvider);
   const handleImage = function (event) {
     var imageFile = event.target.files[0];
     setImage(imageFile);
@@ -41,7 +43,6 @@ export default function CreateComponent({
       video_details.video_title &&
       video_details.video_id
     ) {
-      console.log(video_details);
     } else {
       console.log("value is missing");
     }
@@ -54,14 +55,25 @@ export default function CreateComponent({
     data.append("video_id", video_details.video_id);
     data.append("file", image);
     const url = isEditable ? "/admin/edit_video" : "/createVideo";
-    console.log(data);
+
     var response = await SendData(url, data, "multipart/form-data", false);
     console.log(response);
+    if (response.message) {
+      setNotify(response.message);
+      backToPlaylist((prev) => !prev);
+    } else {
+      setNotify(response.error);
+    }
   };
 
   const deleteVideo = async () => {
     var data = { course_id: currentPlaylist, video_id: video_id };
-    await SendData("/admin/delete_video", data);
+    const response = await SendData("/admin/delete_video", data);
+    if (response.message) {
+      setNotify(response.message);
+    } else {
+      setNotify(response.error);
+    }
   };
 
   return (

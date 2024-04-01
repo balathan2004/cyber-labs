@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import style from "/styles/admin.module.css";
 import PlayList_Card from "@/components/playlist-card";
 import SendData from "@/components/sendData";
-
+import { NotificationProvider } from "@/pages/_app";
 export default function PlayList({ data }) {
   const [playlist, setPlaylist] = useState(data);
   const [isClicked, setIsClicked] = useState(false);
   const [newPlaylist, setNewPlaylist] = useState(null);
   const [image, setImage] = useState({ file: [] });
   const [showImage, setShowImage] = useState(null);
+  const [notify, setNotify] = useContext(NotificationProvider);
 
   const submitForm = async function (event) {
     event.preventDefault();
@@ -28,7 +29,7 @@ export default function PlayList({ data }) {
         console.log(response.playlistName);
         setIsClicked(null);
         setNewPlaylist(null);
-        console.log(response);
+        setNotify(response.message);
         setPlaylist(response.playlistName);
       }
     } catch (e) {
@@ -45,7 +46,7 @@ export default function PlayList({ data }) {
   };
 
   return (
-    <div className="container">
+    <div>
       {playlist
         ? playlist.map((item) => {
             return <PlayList_Card playlist_data={item} key={item.id} />;
@@ -63,6 +64,7 @@ export default function PlayList({ data }) {
             }}
             autoFocus={true}
             required
+            placeholder="enter playlist name"
           ></input>
           <input type="file" onChange={handleImage} required></input>
           <img src={showImage} height={"300px"}></img>

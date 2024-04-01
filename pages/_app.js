@@ -36,18 +36,20 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <NavBarProvider.Provider value={[dirs, setDirs]}>
-      <LoaderProvider.Provider value={[loader, setLoader]}>
-        <NotificationProvider.Provider value={[notify, setNotify]}>
-          <UserCred.Provider value={userData}>
-            {notify ? (
-              <Notification notify={notify} setNotify={setNotify} />
-            ) : null}
-            {loader ? <Loading /> : null}
-            <Component {...pageProps} />
-          </UserCred.Provider>
-        </NotificationProvider.Provider>
-      </LoaderProvider.Provider>
-    </NavBarProvider.Provider>
+    <div className="container">
+      <NavBarProvider.Provider value={[dirs, setDirs]}>
+        <LoaderProvider.Provider value={[loader, setLoader]}>
+          <NotificationProvider.Provider value={[notify, setNotify]}>
+            <UserCred.Provider value={userData}>
+              {notify ? (
+                <Notification notify={notify} setNotify={setNotify} />
+              ) : null}
+              {loader ? <Loading /> : null}
+              <Component {...pageProps} />
+            </UserCred.Provider>
+          </NotificationProvider.Provider>
+        </LoaderProvider.Provider>
+      </NavBarProvider.Provider>
+    </div>
   );
 }

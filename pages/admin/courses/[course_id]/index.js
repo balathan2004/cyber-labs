@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useRouter, useEffect } from "next/router";
 import style from "/styles/admin.module.css";
 
 import PlayListVideoCard from "@/components/playlistVideoCard";
-
+import { NotificationProvider } from "@/pages/_app";
 import CreateComponent from "@/components/playlistCreateComponent";
 import SendData from "@/components/sendData";
 
@@ -12,6 +12,7 @@ export default function Page({ data }) {
 
   const { course_id } = router.query;
   const { playlist_info, videos } = data;
+  const [notify, setNotify] = useContext(NotificationProvider);
   console.log(playlist_info, videos);
   const [isCreate, setIsCreate] = useState(false);
   const [playlistVideos, setPlaylistVideos] = useState(videos ? videos : []);
@@ -20,11 +21,12 @@ export default function Page({ data }) {
     const response = await SendData("/admin/delete_playlist", {
       course_id: course_id,
     });
-    console.log(response);
+    setNotify(response.message);
+    router.push("/admin/courses");
   };
 
   return (
-    <div className="container">
+    <div>
       <div>{playlist_info.playlist_name}</div>
       <div>{playlist_info.content}</div>
       <div className={style.selection}>
@@ -39,7 +41,10 @@ export default function Page({ data }) {
         </button>
       </div>
       {isCreate ? (
-        <CreateComponent currentPlaylist={course_id} />
+        <CreateComponent
+          currentPlaylist={course_id}
+          backToPlaylist={setIsCreate}
+        />
       ) : (
         <div className={style.video_list}>
           {playlistVideos.map((x) => (

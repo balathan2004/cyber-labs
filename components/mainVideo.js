@@ -23,6 +23,10 @@ export default function MainVideo({
   const commentArea = useRef();
   const [notify, setNotify] = useContext(NotificationProvider);
 
+  const [activeIndex, setActiveIndex] = useState(
+    allVideos.findIndex((ele) => ele.video_id == currentVideo)
+  );
+  console.log(activeIndex);
   const commentFetching = (event) => {
     var commentValue = event.target.value;
     setComment(commentValue);
@@ -45,57 +49,51 @@ export default function MainVideo({
   };
 
   return (
-    <div className="container">
-      <h3 className={style.heading}>{playListName}</h3>
-
-      <div className={style.container}>
-        <div className={style.main_video}>
-          <div className={style.video}>
-            <video
-              src={mainVideoData.video_link}
-              controls
-              poster={mainVideoData.video_thumbnail}
-            ></video>
-          </div>
-          <div className={style.video_details}>
-            <h3 className={style.title}>{mainVideoData.video_title}</h3>
-            <span>{mainVideoData.video_caption}</span>
-          </div>
-          <div className={style.comment}>
-            <form className={style.commentBox} onSubmit={sendComment}>
-              <textarea
-                onChange={commentFetching}
-                required
-                ref={commentArea}
-              ></textarea>
-              <button>Comment</button>
-            </form>
-            <div className={style.comment_list}>
-              {commentData.map((ele, index) => (
-                <CommentList commentData={ele} key={index} />
-              ))}
-            </div>
+    <div className={style.container}>
+      <div className={style.main_video}>
+        <div className={style.video}>
+          <video
+            src={mainVideoData.video_link}
+            controls
+            poster={mainVideoData.video_thumbnail}
+          ></video>
+        </div>
+        <div className={style.video_details}>
+          <h3 className={style.title}>{mainVideoData.video_title}</h3>
+          <span>{mainVideoData.video_caption}</span>
+        </div>
+        <div className={style.comment}>
+          <form className={style.commentBox} onSubmit={sendComment}>
+            <textarea
+              onChange={commentFetching}
+              required
+              ref={commentArea}
+            ></textarea>
+            <button>Comment</button>
+          </form>
+          <div className={style.comment_list}>
+            {commentData.map((ele, index) => (
+              <CommentList commentData={ele} key={index} />
+            ))}
           </div>
         </div>
-        <div className={style.video_list}>
-          {allVideos.map((singleVideoData, index) => {
-            return (
-              <SmallCard
-                changeVideo={setMainVideoData}
-                data={singleVideoData}
-                key={index}
-                index={index}
-                changeVideoQuery={changeVideoQuery}
-              />
-            );
-          })}
-        </div>
+      </div>
+      <div className={style.video_list}>
+        {allVideos.map((singleVideoData, index) => {
+          return (
+            <SmallCard
+              mainVideoData={mainVideoData}
+              changeVideo={setMainVideoData}
+              data={singleVideoData}
+              key={index}
+              index={index}
+              isActive={index == activeIndex}
+              setIsActive={setActiveIndex}
+              changeVideoQuery={changeVideoQuery}
+            />
+          );
+        })}
       </div>
     </div>
   );
 }
-
-/*
-
-  
-*/

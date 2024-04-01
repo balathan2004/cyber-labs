@@ -6,7 +6,7 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
   const url = isAdmin
     ? `/admin/courses/${playlist_data.id}`
     : `/courses/${playlist_data.id}`;
-  console.log(playlist_data);
+
   return (
     <a href={url}>
       <article className={style.playlist_card}>
@@ -26,5 +26,3 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
     </a>
   );
 }
-
-//playlist_data.data.playlist_name
