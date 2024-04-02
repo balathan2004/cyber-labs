@@ -16,7 +16,7 @@ export default function Page({ data }) {
   console.log(playlist_info, videos);
   const [isCreate, setIsCreate] = useState(false);
   const [playlistVideos, setPlaylistVideos] = useState(videos ? videos : []);
-
+  console.log(playlistVideos);
   const deletePlaylist = async (course_id) => {
     const response = await SendData("/admin/delete_playlist", {
       course_id: course_id,
@@ -50,7 +50,7 @@ export default function Page({ data }) {
           {playlistVideos.map((x) => (
             <PlayListVideoCard
               video_data={x}
-              key={x.video_caption}
+              key={x}
               course_id={course_id}
               isAdmin={true}
             />

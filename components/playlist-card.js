@@ -8,18 +8,25 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
     : `/courses/${playlist_data.id}`;
 
   return (
-    <a href={url}>
+    <a href={url} className={style.link}>
       <article className={style.playlist_card}>
         <div className={style.content}>
-          <img
-            src={playlist_data.data.playlist_thumbnail}
-            height={"300px"}
-            alt={playlist_data.data.playlist_thumbnail}
-          ></img>
-          <h1>{playlist_data.data.playlist_name}</h1>
-
-          <div className={style.namespace}>
-            <span>Rational Cyberlabs</span>
+          <div>
+            <img
+              src={playlist_data.data.playlist_thumbnail}
+              alt={playlist_data.data.playlist_thumbnail}
+            ></img>
+          </div>
+          <div className={style.content_details}>
+            <h1>{playlist_data.data.playlist_name}</h1>
+            <div className={style.namespace}>
+              <span>Rational Cyberlabs</span>
+              <p>
+                {playlist_data.data.playlist_description
+                  ? playlist_data.data.playlist_description
+                  : "nothing"}
+              </p>
+            </div>{" "}
           </div>
         </div>
       </article>

@@ -108,14 +108,14 @@
 .playlist_videos{
   height: max-content;
   margin: 1rem;
-  max-width: 350px;
+  max-width: 300px;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.playlist_videos .video_card{
+ .video_card{
 width: 100%;
 text-decoration: none;
 color: black;
@@ -126,8 +126,8 @@ border-radius: 5px;
 text-align: center;
 }
 
-.playlist_videos .video_card img{
-width: 100%;
+ .video_card img{
+
 }
 
 

@@ -92,10 +92,48 @@ display: block;
 
 /* admin card */
 
+.link{
+    text-decoration: none;
+}
 
 .playlist_card{
     margin: 10px;
+    margin-top: 2rem;
 }
+
+
+.playlist_card .content{
+    display: flex;
+    gap: 10px;
+    text-transform: capitalize;
+    color: black;
+
+}
+
+
+.playlist_card .content_details h1{
+  margin-bottom: 1rem;
+}
+
+
+.playlist_card .content_details span{
+   font-size: 22px;
+   display: block;
+margin-bottom: 1rem;
+
+}
+
+.playlist_card .content_details p{
+   font-size: 18px;
+   
+}
+
+
+.playlist_card img{
+height: 200px;
+}
+
+
 
 
 .container .video_list {
@@ -105,6 +143,9 @@ display: block;
     overflow-y: scroll;
     padding: 10px 20px 10px 10px;
   }
+
+
+
 
 
 
