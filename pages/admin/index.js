@@ -1,10 +1,14 @@
 import React, { Component, useState, useEffect } from "react";
 import style from "/styles/admin.module.css";
+import {
+  UsersAdminComponent,
+  PlayListAdminComponent,
+} from "@/components/adminComponents";
 export default function Admin() {
-  const [currentState, setCurrentState] = useState(null);
+  const [currentState, setCurrentState] = useState(true);
 
   const handleContent = (name) => {
-    console.log(name);
+    setCurrentState((prev) => !prev);
   };
 
   return (
@@ -13,21 +17,24 @@ export default function Admin() {
         <header>
           <ul>
             <li
+              className={currentState ? style.active : null}
+              onClick={() => handleContent("playlist")}
+              name="playlist"
+            >
+              Playlists
+            </li>
+            <li
               onClick={() => handleContent("user")}
               name="user"
-              className={style.active}
+              className={!currentState ? style.active : null}
             >
               Users
             </li>
-            <li onClick={() => handleContent("playlist")} name="playlist">
-              Playlists
-            </li>
-            <li onClick={() => handleContent("create")} name="create">
-              Create
-            </li>
           </ul>
         </header>
-        <article></article>
+        <article>
+          {currentState ? <PlayListAdminComponent /> : <UsersAdminComponent />}
+        </article>
         <footer></footer>
       </main>
     </div>

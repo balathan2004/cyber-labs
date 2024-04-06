@@ -4,7 +4,7 @@ import style from "/styles/admin.module.css";
 
 import PlayListVideoCard from "@/components/playlistVideoCard";
 import { NotificationProvider } from "@/pages/_app";
-import CreateComponent from "@/components/playlistCreateComponent";
+import CreateComponent from "@/components/videoCreateComponent";
 import SendData from "@/components/sendData";
 
 export default function Page({ data }) {
@@ -18,20 +18,33 @@ export default function Page({ data }) {
   const [playlistVideos, setPlaylistVideos] = useState(videos ? videos : []);
   console.log(playlistVideos);
   const deletePlaylist = async (course_id) => {
-    const response = await SendData("/admin/delete_playlist", {
-      course_id: course_id,
-    });
-    setNotify(response.message);
-    router.push("/admin/courses");
+    const permission = confirm("Are you sure to delete this playlist");
+    if (permission) {
+      const response = await SendData("/admin/delete_playlist", {
+        course_id: course_id,
+      });
+      setNotify(response.message);
+      router.push("/admin/courses");
+    }
   };
 
   return (
-    <div>
-      <div>{playlist_info.playlist_name}</div>
-      <div>{playlist_info.content}</div>
+    <div className={style.video_page}>
+      <div>Playlist name:{playlist_info.playlist_name}</div>
+      <div>Playlist info:{playlist_info.content}</div>
       <div className={style.selection}>
-        <button onClick={() => setIsCreate(false)}>PlayList</button>
-        <button onClick={() => setIsCreate(true)}>Create video</button>
+        <button
+          className={!isCreate ? style.active_button : ""}
+          onClick={() => setIsCreate(false)}
+        >
+          PlayList
+        </button>
+        <button
+          className={isCreate ? style.active_button : ""}
+          onClick={() => setIsCreate(true)}
+        >
+          Create video
+        </button>
         <button
           onClick={() => {
             deletePlaylist(course_id);
@@ -47,14 +60,18 @@ export default function Page({ data }) {
         />
       ) : (
         <div className={style.video_list}>
-          {playlistVideos.map((x) => (
-            <PlayListVideoCard
-              video_data={x}
-              key={x}
-              course_id={course_id}
-              isAdmin={true}
-            />
-          ))}
+          {playlistVideos.length > 0 ? (
+            playlistVideos.map((x) => (
+              <PlayListVideoCard
+                video_data={x}
+                key={x}
+                course_id={course_id}
+                isAdmin={true}
+              />
+            ))
+          ) : (
+            <h1>No video Found</h1>
+          )}
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import CreateComponent from "@/components/playlistCreateComponent";
+import CreateComponent from "@/components/videoCreateComponent";
 import style from "/styles/admin.module.css";
 
 export default function AdminVideo({ data }) {

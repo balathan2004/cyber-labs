@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import style from "/styles/admin.module.css";
+import PlaylistCreateComponent from "@/components/playlistCreateComponent";
 import PlayList_Card from "@/components/playlist-card";
 import SendData from "@/components/sendData";
 import { NotificationProvider } from "@/pages/_app";
@@ -11,22 +12,20 @@ export default function PlayList({ data }) {
     playlist_description: null,
   });
   const [image, setImage] = useState({ file: [] });
-  const [showImage, setShowImage] = useState(null);
+
   const [notify, setNotify] = useContext(NotificationProvider);
-
-  const handleInput = (event) => {
-    const { name } = event.target;
-    const targetValue = event.target.value.trim();
-
-    setNewPlaylistInfo((prev) => ({ ...prev, [name]: targetValue }));
-  };
 
   const submitForm = async function (event) {
     event.preventDefault();
-
+    const trimmedData = Object.fromEntries(
+      Object.entries(newPlaylistInfo).map(([key, value]) => [
+        key,
+        value ? value.trim() : null,
+      ])
+    );
     const data = new FormData();
-    data.append("playlist_name", newPlaylistInfo.playlist_name);
-    data.append("playlist_description", newPlaylistInfo.playlist_description);
+    data.append("playlist_name", trimmedData.playlist_name);
+    data.append("playlist_description", trimmedData.playlist_description);
     data.append("file", image);
 
     try {
@@ -48,44 +47,26 @@ export default function PlayList({ data }) {
     }
   };
 
-  const handleImage = async (event) => {
-    var file = event.target.files[0];
-    var urlImage = URL.createObjectURL(file);
-    setImage(file);
-
-    setShowImage(urlImage);
-  };
-
   return (
     <div>
-      {playlist
-        ? playlist.map((item) => {
-            return <PlayList_Card playlist_data={item} key={item.id} />;
-          })
-        : null}
       <button onClick={() => setIsClicked((prev) => !prev)}>
         New Playlist
       </button>
+      {playlist.length > 0 ? (
+        playlist.map((item) => {
+          return <PlayList_Card playlist_data={item} key={item.id} />;
+        })
+      ) : (
+        <h2>No PlayList found</h2>
+      )}
+
       {isClicked ? (
-        <form onSubmit={submitForm}>
-          <input
-            type="text"
-            onChange={handleInput}
-            autoFocus={true}
-            required
-            name="playlist_name"
-            placeholder="enter playlist name"
-          ></input>
-          <input type="file" onChange={handleImage} required></input>
-          <img src={showImage} height={"300px"}></img>
-          <textarea
-            onChange={handleInput}
-            required
-            name="playlist_description"
-            placeholder="please enter a description at least 10 words"
-          ></textarea>
-          <button>Confirm</button>
-        </form>
+        <PlaylistCreateComponent
+          setNewPlaylistInfo={setNewPlaylistInfo}
+          submitForm={submitForm}
+          setImage={setImage}
+          setIsClicked={setIsClicked}
+        />
       ) : null}
     </div>
   );
