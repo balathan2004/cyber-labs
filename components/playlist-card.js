@@ -8,7 +8,7 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
     : `/courses/${playlist_data.id}`;
 
   return (
-    <a href={url} className={style.link}>
+    <a href={url} className="course_flexbox_link">
       <article className={style.playlist_card}>
         <div className={style.content}>
           <div>

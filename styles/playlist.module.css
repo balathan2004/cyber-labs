@@ -11,6 +11,12 @@
   height: max-content;
   overflow-y: auto;
 }
+
+.course_flexbox{
+  display: flex;
+}
+
+
 .container .main_video {
   width: 70%;
   background: #fff;

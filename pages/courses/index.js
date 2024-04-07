@@ -1,11 +1,12 @@
 import Card from "@/components/card";
+import style from "/styles/course.module.css";
 import PlayList_Card from "@/components/playlist-card";
 export default function Courses({ data }) {
   return (
     <div className="container">
       <h1>Courses</h1>
 
-      <div className="container">
+      <div className={style.course_flexbox}>
         {data
           ? data.map((item) => {
               return (

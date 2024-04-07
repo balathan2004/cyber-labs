@@ -11,15 +11,17 @@ export default function Page({ data }) {
   const currentPlaylist = router.query.id;
   console.log(currentPlaylist);
   return (
-    <div className={style.playlist_videos}>
-      <h1>{playlist_info.playlist_name}</h1>
-      {videos.map((x) => (
-        <PlayListVideoCard
-          video_data={x}
-          key={x.video_caption}
-          course_id={course_id}
-        />
-      ))}
+    <div className="container">
+      <div className={style.course_flexbox}>
+        <h1>{playlist_info.playlist_name}</h1>
+        {videos.map((x) => (
+          <PlayListVideoCard
+            video_data={x}
+            key={x.video_caption}
+            course_id={course_id}
+          />
+        ))}
+      </div>
     </div>
   );
 }

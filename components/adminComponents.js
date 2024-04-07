@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GetData from "./getData";
+import PlayList_Card from "./playlist-card";
 
 export function UsersAdminComponent() {
   const [data, setData] = useState([]);
@@ -14,7 +15,13 @@ export function UsersAdminComponent() {
     fetchData();
   }, []);
 
-  return <div>Hello</div>;
+  return (
+    <div>
+      {data.map((ele) => {
+        return <li>{ele.uid}</li>;
+      })}
+    </div>
+  );
 }
 
 export function PlayListAdminComponent() {
@@ -30,5 +37,11 @@ export function PlayListAdminComponent() {
     fetchData();
   }, []);
 
-  return <div>Hello</div>;
+  return (
+    <div>
+      {data.map((ele) => (
+        <PlayList_Card playlist_data={ele} isAdmin={true} key={ele.id} />
+      ))}
+    </div>
+  );
 }

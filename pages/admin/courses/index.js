@@ -52,13 +52,15 @@ export default function PlayList({ data }) {
       <button onClick={() => setIsClicked((prev) => !prev)}>
         New Playlist
       </button>
-      {playlist.length > 0 ? (
-        playlist.map((item) => {
-          return <PlayList_Card playlist_data={item} key={item.id} />;
-        })
-      ) : (
-        <h2>No PlayList found</h2>
-      )}
+      <div className="course_flexbox">
+        {playlist.length > 0 ? (
+          playlist.map((item) => {
+            return <PlayList_Card playlist_data={item} key={item.id} />;
+          })
+        ) : (
+          <h2>No PlayList found</h2>
+        )}
+      </div>
 
       {isClicked ? (
         <PlaylistCreateComponent

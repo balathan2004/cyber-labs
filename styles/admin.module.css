@@ -181,18 +181,15 @@ margin-top: 0.5rem;
 
 /* admin card */
 
-.link{
-    text-decoration: none;
-}
+
 
 .playlist_card{
     margin: 10px;
-    margin-top: 2rem;
+     display: block;
 }
 
 
 .playlist_card .content{
-    display: flex;
     gap: 10px;
     text-transform: capitalize;
     color: black;
@@ -219,7 +216,9 @@ margin-bottom: 1rem;
 
 
 .playlist_card img{
-height: 200px;
+width: 100%;
+aspect-ratio: 16/9;
+object-fit: cover;
 }
 
 
@@ -273,4 +272,6 @@ height: 200px;
   .video_page .active_button{
     background-color: skyblue;
   }
+
+
 
