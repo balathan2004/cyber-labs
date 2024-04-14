@@ -4,13 +4,13 @@ import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import SendData from "./sendData";
 import React, { useContext, useState } from "react";
 import loginMethod from "./method";
-import { LoaderProvider, ReplyProvider } from "@/pages/_app";
+import { LoaderProvider, NotificationProvider } from "@/pages/_app";
 
 export default function LoginBox({ parentResponseState }) {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [loader, setLoader] = useContext(LoaderProvider);
-  const [reply, setReply] = useContext(ReplyProvider);
+  const [reply, setReply] = useContext(NotificationProvider);
   const [response, setResponse] = useState("");
   const handler = async (event) => {
     event.preventDefault();

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import SendData from "./sendData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { LoaderProvider, ReplyProvider } from "@/pages/_app";
+import { LoaderProvider, NotificationProvider } from "@/pages/_app";
 export default function SignUpBox({ parentResponseState }) {
   const [userCred, setUserCred] = useState({
     username: "",
@@ -17,7 +17,7 @@ export default function SignUpBox({ parentResponseState }) {
 
   const [loader, setLoader] = useContext(LoaderProvider);
   const [passCheck, setPassCheck] = useState(null);
-  const [reply, setReply] = useContext(ReplyProvider);
+  const [reply, setReply] = useContext(NotificationProvider);
 
   // phone number disalbled
   useEffect(() => {
