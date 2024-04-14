@@ -13,7 +13,7 @@ export default function PlayListVideoCard({
   console.log(video_data);
 
   return (
-    <a href={url} className={style.link}>
+    <a href={url} className="course_flexbox_link">
       <article className={style.playlist_card}>
         <div className={style.content}>
           <div>

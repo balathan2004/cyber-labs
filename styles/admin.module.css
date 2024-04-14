@@ -155,9 +155,6 @@ display: block;
 margin-top: 0.5rem;
 }
 
-.content input{
-    display: none;
-}
 
 .content label{
     cursor: pointer;

@@ -38,7 +38,7 @@ export function PlayListAdminComponent() {
   }, []);
 
   return (
-    <div>
+    <div className="course_flexbox">
       {data.map((ele) => (
         <PlayList_Card playlist_data={ele} isAdmin={true} key={ele.id} />
       ))}

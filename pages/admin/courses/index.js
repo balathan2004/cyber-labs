@@ -75,7 +75,10 @@ export default function PlayList({ data }) {
 }
 
 export async function getServerSideProps() {
-  const apiUrl = "http://localhost:3000/api/get_playlist";
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.Vercel_URL}/api/admin/get_playlist`
+      : "http://localhost:3000/api/admin/get_playlist";
 
   const response = await fetch(apiUrl, {
     method: "GET",

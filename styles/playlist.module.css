@@ -34,106 +34,174 @@
   padding-top: 15px;
   padding-bottom: 15px;
 }
-.container .video_list {
-  background: #fff;
-  border-radius: 5px;
-  flex: 30%;
-  width: 100%;
-  height: max-content;
-  gap: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+
+.container .main_video .comment{
+   margin-top: 1rem;
+
 }
 
 
-.container .video_list::-webkit-scrollbar {
-    width: 7px;
-}
-.container .video_list::-webkit-scrollbar-track {
-  background: #ccc;
-  border-radius: 50px;
-}
-.container .video_list::-webkit-scrollbar-thumb {
-  background: #666;
-  border-radius: 50px;
+.container .main_video .comment .commentBox{
+  border: 1px solid black;
+  margin: 1rem 0;
 }
 
-
-
-
-.container .video_list .video_list_item,  .active_video{
-  width: 100%;
-  max-height: 200px;
-  height: 200px;
-  border-radius: 10px;
-}
-
-
-
-
-
-.container .video_list .video_list_item .vid , .active_video .vid{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #a54646;
-  padding: 15px 10px;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.active_video .vid{
-  background-color: rgb(126, 126, 220);
-}
-
-
-
-
-
-.container .video_list .vid img{
-  max-height: 90%;
-  display: block;
-  min-width: 100%;
-  max-width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit:filled;
-}
-
-.container .video_list .vid span{
-  line-height: 30px;
-}
-
-
-/* playlist vid3eo card */
-
-.playlist_videos{
-  height: max-content;
+.container .main_video .comment .commentBox span{
   margin: 1rem;
-  max-width: 300px;
-  position: relative;
+  display: block;
+}
+
+.container .main_video .comment .commentBox textarea{
+width: 90%;
+display: block;
+margin: auto;
+resize: none;
+border: none;
+min-height: 40px;
+font-size: 18px;
+border-bottom: 1px solid black;
+}
+
+.container .main_video .comment .commentBox textarea:focus{
+  border: none; 
+  border-bottom: 1px solid blue;
+}
+
+
+.container .main_video .comment .commentBox  button{
+  margin: 1rem 2rem;
+  height: 40px;
+  width:100px;
+  background-color: skyblue;
+  
+}
+
+
+/*sidebar*/
+
+
+
+
+.white_box{
+  height: max-content;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 25px;
+}
+
+
+.white_box .line1 {
+  font-size: 1em;
+  text-align: center;
+}
+
+
+.line1 span{
+  font-size: 0.8em;
+  color: blue;
+  font-weight: bold;
+
+}
+
+.white_box hr{
+  margin: 1rem;
+}
+
+
+.boxes img{
+  height: 175px;
+  width: 225px;
+  border-radius: 30px;
+  padding: 20px;
+  
+ 
+}
+
+.boxes .box{
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  
 }
 
- .video_card{
-width: 100%;
-text-decoration: none;
-color: black;
-font-size: 20px;
-border: 1px solid black;
-padding: 1px;
-border-radius: 5px;
-text-align: center;
+.boxes .selected_box{
+  display: flex;
+  background-color: rgb(96, 210, 94);
 }
 
- .video_card img{
+.boxes p{
+  font-size: 20px;
+  padding-top: 1.4rem;
+}
 
+.boxes .box1_text span{
+
+ color: black;
+ position: relative;
+ top: .5rem;
+ font-size: 1em;
+
+}
+
+#down-arrow{
+
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  
+
+}
+
+.boxes .box:hover
+{
+  transform: scale(1.02);
+  cursor: pointer;
+  background-color: skyblue;
+  border-radius: 4px;
+}
+
+.boxes .selected_box:hover{
+  cursor:not-allowed;
+}
+
+@media only screen and (max-width: 768px) {
+ 
+
+  .white_box {
+      height: auto;
+      width: 90%;
+      margin: 5% auto;
+  }
+
+  .white_box .line1 {
+      font-size: 1.5em;
+      margin-left: 10%;
+  }
+
+  .boxes img {
+      height: auto;
+      width: 90%;
+      margin-left: 5%;
+  }
+
+  .boxes .box1{
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .boxes p {
+      font-size: 1.3em;
+      margin-left: 0;
+      text-align: center;
+  }
+
+  .boxes .box1-text span {
+      margin-left: 0;
+      text-align: center;
+  }
+
+  #down-arrow {
+      margin-left: 30%;
+  }
 }
 
 

@@ -59,7 +59,7 @@ export default function Page({ data }) {
           backToPlaylist={setIsCreate}
         />
       ) : (
-        <div className={style.video_list}>
+        <div className="course_flexbox">
           {playlistVideos.length > 0 ? (
             playlistVideos.map((x) => (
               <PlayListVideoCard
@@ -80,7 +80,11 @@ export default function Page({ data }) {
 
 export async function getServerSideProps(context) {
   const playlistId = { course_id: context.query.course_id };
-  const response = await fetch("http://localhost:3000/api/single_playlist", {
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.Vercel_URL}/api/admin/single_playlist`
+      : "http://localhost:3000/api/admin/single_playlist";
+  const response = await fetch(apiUrl, {
     method: "POST",
     contentType: "application/json",
     body: JSON.stringify(playlistId),

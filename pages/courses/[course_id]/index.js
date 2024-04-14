@@ -11,9 +11,9 @@ export default function Page({ data }) {
   const currentPlaylist = router.query.id;
   console.log(currentPlaylist);
   return (
-    <div className="container">
-      <div className={style.course_flexbox}>
-        <h1>{playlist_info.playlist_name}</h1>
+    <div>
+      <h1>{playlist_info.playlist_name}</h1>
+      <div className="course_flexbox">
         {videos.map((x) => (
           <PlayListVideoCard
             video_data={x}
@@ -28,8 +28,11 @@ export default function Page({ data }) {
 
 export async function getServerSideProps(context) {
   const playlistId = { course_id: context.query.course_id };
-  console.log(playlistId, "skddko");
-  const response = await fetch("http://localhost:3000/api/single_playlist", {
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.Vercel_URL}/api/single_playlist`
+      : "http://localhost:3000/api/single_playlist";
+  const response = await fetch(apiUrl, {
     method: "POST",
     contentType: "application/json",
     body: JSON.stringify(playlistId),

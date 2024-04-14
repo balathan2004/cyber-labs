@@ -4,20 +4,14 @@ import { v4 } from "uuid";
 import { NotificationProvider } from "@/pages/_app";
 import SendData from "@/components/sendData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export default function CreateComponent({
-  currentPlaylist,
-  isEditable = false,
-  video_id = false,
-  existingData = false,
-  backToPlaylist,
-}) {
+export default function CreateComponent({ currentPlaylist, backToPlaylist }) {
   const [image, setImage] = useState({ file: [] });
   const [showImage, setShowImage] = useState([]);
   const [video_details, setVideoDetails] = useState({
-    video_id: video_id ? video_id : v4(),
-    video_caption: existingData ? existingData.video_caption : null,
-    video_link: existingData ? existingData.video_link : null,
-    video_title: existingData ? existingData.video_title : null,
+    video_id: v4(),
+    video_caption: null,
+    video_link: null,
+    video_title: null,
     video_playlist: currentPlaylist,
   });
   const [notify, setNotify] = useContext(NotificationProvider);
@@ -61,7 +55,7 @@ export default function CreateComponent({
     data.append("video_playlist", trimmedData.video_playlist);
     data.append("video_id", trimmedData.video_id);
     data.append("file", image);
-    const url = isEditable ? "/admin/edit_video" : "/createVideo";
+    const url = "/admin/create_video";
 
     var response = await SendData(url, data, "multipart/form-data", false);
     console.log(response);
@@ -128,7 +122,6 @@ export default function CreateComponent({
           </div>
         </div>
       </form>
-      {isEditable ? <button onClick={deleteVideo}>Delete</button> : null}
     </div>
   );
 }

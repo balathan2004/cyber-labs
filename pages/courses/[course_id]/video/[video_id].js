@@ -45,8 +45,13 @@ export default function AdminVideo({ playlistData }) {
 export async function getServerSideProps(context) {
   const { course_id, video_id } = context.query;
 
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.Vercel_URL}/api/single_playlist`
+      : "http://localhost:3000/api/single_playlist";
+
   const playlistId = { course_id: course_id, video_id: video_id };
-  const response = await fetch("http://localhost:3000/api/single_playlist", {
+  const response = await fetch(apiUrl, {
     method: "POST",
     contentType: "application/json",
     body: JSON.stringify(playlistId),

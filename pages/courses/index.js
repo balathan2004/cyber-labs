@@ -3,10 +3,10 @@ import style from "/styles/course.module.css";
 import PlayList_Card from "@/components/playlist-card";
 export default function Courses({ data }) {
   return (
-    <div className="container">
+    <div>
       <h1>Courses</h1>
 
-      <div className={style.course_flexbox}>
+      <div className="course_flexbox">
         {data
           ? data.map((item) => {
               return (
@@ -24,7 +24,10 @@ export default function Courses({ data }) {
 }
 
 export async function getServerSideProps() {
-  const apiUrl = "http://localhost:3000/api/client/get_client_playlist";
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.Vercel_URL}/api/client/get_client_playlist`
+      : "http://localhost:3000/api/client/get_client_playlist";
 
   const response = await fetch(apiUrl, {
     method: "GET",
