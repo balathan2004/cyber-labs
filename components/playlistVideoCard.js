@@ -23,11 +23,16 @@ export default function PlayListVideoCard({
             ></img>
           </div>
           <div className={style.content_details}>
-            <h1>{video_data.video_title}</h1>
-            <div className={style.namespace}>
-              <span>Rational Cyberlabs</span>
-              <p>{video_data.caption ? video_data.caption : "nothing"}</p>
-            </div>{" "}
+            <div className={style.left}>
+              <img className={style.logo} src={"/logo1.jpg"}></img>
+            </div>
+            <div className={style.right}>
+              <h1>{video_data.video_title}</h1>
+              <div className={style.namespace}>
+                <span>Rational Cyberlabs</span>
+                <p>{video_data.caption ? video_data.caption : "nothing"}</p>
+              </div>{" "}
+            </div>
           </div>
         </div>
       </article>

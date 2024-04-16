@@ -25,10 +25,15 @@ export default function MainVideo({
   const commentArea = useRef();
   const [notify, setNotify] = useContext(NotificationProvider);
   const [height, setHeight] = useState("auto");
+  const [showCommentBox, setShowCommentBox] = useState(false);
 
   const [activeIndex, setActiveIndex] = useState(
     allVideos.findIndex((ele) => ele.video_id == currentVideo)
   );
+
+  const handleToggler = () => {
+    setShowCommentBox((prev) => !prev);
+  };
 
   const commentFetching = (event) => {
     var commentValue = event.target.value;
@@ -82,7 +87,14 @@ export default function MainVideo({
             <button type="submit">Comment</button>
             <button>Cancel</button>
           </form>
-          <div className={style.comment_list}>
+          <span className={style.toggler} onClick={handleToggler}>
+            Show Comments
+          </span>
+          <div
+            className={
+              showCommentBox ? style.comment_list_show : style.comment_list
+            }
+          >
             {commentData.map((ele, index) => (
               <CommentList
                 commentData={ele}

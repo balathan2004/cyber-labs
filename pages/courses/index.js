@@ -4,7 +4,7 @@ import PlayList_Card from "@/components/playlist-card";
 export default function Courses({ data }) {
   return (
     <div>
-      <h1>Courses</h1>
+      <h1 className="title">Courses</h1>
 
       <div className="course_flexbox">
         {data

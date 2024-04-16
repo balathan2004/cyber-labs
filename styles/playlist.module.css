@@ -12,17 +12,15 @@
   overflow-y: auto;
 }
 
-.course_flexbox{
+.course_flexbox {
   display: flex;
 }
 
-
 .container .main_video {
-  width: 70%;
+  flex: 1;
   background: #fff;
   border-radius: 5px;
   padding: 10px;
-
 }
 .container .main_video video {
   width: 100%;
@@ -35,190 +33,229 @@
   padding-bottom: 15px;
 }
 
-
-.container .main_video .comment{
-   margin-top: 1rem;
-
+.container .main_video .comment {
+  margin-top: 1rem;
 }
 
-
-.container .main_video .comment .commentBox{
+.container .main_video .comment .commentBox {
   border: 1px solid black;
   margin: 1rem 0;
 }
 
-.container .main_video .comment .commentBox span{
+.container .main_video .comment .commentBox span {
   margin: 1rem;
   display: block;
 }
 
-.container .main_video .comment .commentBox textarea{
-width: 90%;
-display: block;
-margin: auto;
-resize: none;
-border: none;
-min-height: 40px;
-font-size: 18px;
-border-bottom: 1px solid black;
+.container .main_video .comment .toggler {
+  margin: 1rem;
+  display: none;
 }
 
-.container .main_video .comment .commentBox textarea:focus{
-  border: none; 
+.container .main_video .comment .commentBox textarea {
+  width: 90%;
+  display: block;
+  margin: auto;
+  resize: none;
+  border: none;
+  min-height: 40px;
+  font-size: 18px;
+  border-bottom: 1px solid black;
+}
+
+.container .main_video .comment .commentBox textarea:focus {
+  border: none;
   border-bottom: 1px solid blue;
 }
 
-
-.container .main_video .comment .commentBox  button{
+.container .main_video .comment .commentBox button {
   margin: 1rem 2rem;
   height: 40px;
-  width:100px;
+  width: 100px;
   background-color: skyblue;
-  
 }
 
+.container .main_video .comment .comment_list_show {
+  display: block;
+}
+
+.container .main_video .comment .comment_list,
+.comment_list_show {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.container .main_video .comment .comment_list .comment_item,
+.comment_list_show .comment_item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment_list .comment_item .comment_item_top,
+.comment_list_show .comment_item .comment_item_top {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment_item_top .left {
+}
+
+.comment_item_top .left img {
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.comment_item_top .right {
+  margin-top: 5px;
+}
+
+.comment_item_top .right span {
+  font-weight: 600;
+}
+
+.comment_item .comment_item_bottom {
+}
+
+.button_container {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment_item .comment_item_bottom button {
+  padding: 4px 10px;
+  background-color: lightgrey;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: sans-serif;
+  font-weight: 550;
+}
+
+.comment_item .reply_comment {
+  margin: 1rem 2rem;
+}
 
 /*sidebar*/
 
-
-
-
-.white_box{
+.white_box {
   height: max-content;
-  max-width: 500px;
+  min-width: 450px;
+  width: 450px;
   background-color: white;
-  border-radius: 25px;
+  border-radius: 10px;
 }
-
 
 .white_box .line1 {
   font-size: 1em;
   text-align: center;
 }
 
-
-.line1 span{
+.line1 span {
   font-size: 0.8em;
   color: blue;
   font-weight: bold;
-
 }
 
-.white_box hr{
+.white_box hr {
   margin: 1rem;
 }
 
-
-.boxes img{
-  height: 175px;
-  width: 225px;
+.boxes img {
+  width: 50%;
+  aspect-ratio: 4/2.5;
   border-radius: 30px;
   padding: 20px;
-  
- 
 }
 
-.boxes .box{
+.boxes .box {
   display: flex;
-  
+  height: auto;
 }
 
-.boxes .selected_box{
+.boxes .selected_box {
   display: flex;
   background-color: rgb(96, 210, 94);
 }
 
-.boxes p{
+.boxes p {
   font-size: 20px;
   padding-top: 1.4rem;
 }
 
-.boxes .box1_text span{
-
- color: black;
- position: relative;
- top: .5rem;
- font-size: 1em;
-
+.boxes .box1_text span {
+  color: black;
+  position: relative;
+  top: 0.5rem;
+  font-size: 1em;
 }
 
-#down-arrow{
-
+#down-arrow {
   height: 30px;
   width: 30px;
   cursor: pointer;
-  
-
 }
 
-.boxes .box:hover
-{
+.boxes .box:hover {
   transform: scale(1.02);
   cursor: pointer;
   background-color: skyblue;
   border-radius: 4px;
 }
 
-.boxes .selected_box:hover{
-  cursor:not-allowed;
+.boxes .selected_box:hover {
+  cursor: not-allowed;
 }
 
 @media only screen and (max-width: 768px) {
- 
-
   .white_box {
-      height: auto;
-      width: 90%;
-      margin: 5% auto;
+    height: auto;
+    width: 90%;
+    
   }
 
   .white_box .line1 {
-      font-size: 1.5em;
-      margin-left: 10%;
+    font-size: 1.5em;
+    
   }
 
-  .boxes img {
-      height: auto;
-      width: 90%;
-      margin-left: 5%;
-  }
 
-  .boxes .box1{
-      flex-direction: column;
-      align-items: center;
-  }
+
 
   .boxes p {
-      font-size: 1.3em;
-      margin-left: 0;
-      text-align: center;
+    font-size: 1.3em;
+    margin-left: 0;
+    text-align: center;
   }
 
   .boxes .box1-text span {
-      margin-left: 0;
-      text-align: center;
+    margin-left: 0;
+    text-align: center;
   }
 
-  #down-arrow {
-      margin-left: 30%;
-  }
 }
 
-
-
-
-
-@media (max-width: 991px) {
+@media (max-width: 1000px) {
   .container {
-    grid-template-columns: 1.5fr 1fr;
-    padding: 10px;
+    flex-direction: column;
+    align-items: center;
   }
-}
 
-@media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
+  .container .main_video .comment .comment_list {
+    display: none;
+  }
 
-    padding: 10px;
+  .container .main_video .comment .toggler {
+    display: block;
+    cursor: pointer;
+  }
+
+  .container .main_video,
+  .container .white_box {
+    width: 95%;
+    max-width: none;
   }
 }

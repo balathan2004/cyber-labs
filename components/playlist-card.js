@@ -18,15 +18,13 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
             ></img>
           </div>
           <div className={style.content_details}>
-            <h1>{playlist_data.data.playlist_name}</h1>
-            <div className={style.namespace}>
+            <div className={style.left}>
+              <img className={style.logo} src={"/logo1.jpg"}></img>
+            </div>
+            <div className={style.right}>
+              <h1>{playlist_data.data.playlist_name}</h1>
               <span>Rational Cyberlabs</span>
-              <p>
-                {playlist_data.data.playlist_description
-                  ? playlist_data.data.playlist_description
-                  : "nothing"}
-              </p>
-            </div>{" "}
+            </div>
           </div>
         </div>
       </article>

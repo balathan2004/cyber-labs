@@ -1,20 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
 
-.container{
+.container {
   min-height: 100vh;
   width: 100vw;
   overflow-y: auto;
   position: relative;
   background-color: lightgray;
 }
-
 
 .loader {
   border: 7px solid rgb(79, 75, 75);
@@ -31,45 +30,62 @@
   background-color: transparent(241, 238, 238);
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.title{
+  line-height: 65px;
+  text-align: center;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-.notification{
+.notification {
   position: absolute;
   top: 5%;
   right: 5%;
   width: 300px;
 }
 
-
-.course_flexbox{
+.course_flexbox {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap:2rem;
+  gap: 2rem;
 }
 
-
-.course_flexbox_link{
-
-width: 30%;
-height: 375px;
-   text-decoration: none;
+.course_flexbox_link {
+  width: 30%;
+  height: 375px;
+  text-decoration: none;
 }
 
+@media only screen and (max-width: 1000px) {
+  .course_flexbox_link {
+    height: fit-content;
+    width: 40%;
+  }
+}
 
-@media  only screen and (max-width:800px){
-
-  .course_flexbox_link{
-
+@media only screen and (max-width: 800px) {
+  .course_flexbox_link {
+    height: fit-content;
     width: 45%;
-       
-       
-    }
-
+  }
 }
 
+@media only screen and (max-width: 600px) {
+  .course_flexbox {
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .course_flexbox_link {
+    height: fit-content;
+    width: 90%;
+  }
+}

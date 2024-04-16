@@ -2,6 +2,7 @@ import style from "/styles/playlist.module.css";
 import moment from "moment";
 import React, { useState, useRef } from "react";
 import SendData from "./sendData";
+import { defaultImage } from "./smallComponents";
 
 export function SmallCard({
   mainVideoData,
@@ -40,6 +41,14 @@ export function SmallCard({
 export function CommentList({ commentData, userData, setNotify }) {
   console.log(commentData);
   const [showReplyBox, setShowReplyBox] = useState(false);
+  const [isCommentShow, setIsCommentShow] = useState(false);
+  const [commentChild, setCommentChild] = useState(
+    commentData.hasReplies ? commentData.hasReplies : []
+  );
+
+  const commentHandler = () => {
+    setIsCommentShow((prev) => !prev);
+  };
 
   const showBox = () => {
     setShowReplyBox(true);
@@ -50,23 +59,43 @@ export function CommentList({ commentData, userData, setNotify }) {
   };
   return (
     <div className={style.comment_item}>
-      <div className={style.left}>
-        <img></img>
+      <div className={style.comment_item_top}>
+        <div className={style.left}>
+          <img src={defaultImage(commentData.comment_user)}></img>
+        </div>
+        <div className={style.right}>
+          <span>{commentData.comment_user}</span>
+          <p>{commentData.comment}</p>
+        </div>
       </div>
-      <div className={style.right}>
-        <span>{commentData.comment_user}</span>
-        <p>{commentData.comment}</p>
+      <div className={style.comment_item_bottom}>
+        <div className={style.button_container}>
+          {!showReplyBox ? <button onClick={showBox}>Reply</button> : null}
+          {commentChild.length > 0 ? (
+            <button onClick={commentHandler}>
+              {isCommentShow ? "hide replies" : "see all comments"}
+            </button>
+          ) : null}
+        </div>
+        <div>
+          {isCommentShow
+            ? commentChild.map((ele, index) => {
+                return <SingleReply commentData={ele} key={index} />;
+              })
+            : null}
+        </div>
+        <div>
+          {showReplyBox ? (
+            <ReplyComment
+              commentData={commentData}
+              userData={userData}
+              setNotify={setNotify}
+              updateChildComments={setCommentChild}
+              removeShowBox={setShowReplyBox} //hide after comment
+            />
+          ) : null}
+        </div>
       </div>
-      <button onClick={showBox}>Reply</button>
-      <button onClick={hideBox}>cancel</button>
-      {showReplyBox ? (
-        <ReplyComment
-          commentData={commentData}
-          userData={userData}
-          setNotify={setNotify}
-          removeShowBox={setShowReplyBox} //hide after comment
-        />
-      ) : null}
     </div>
   );
 }
@@ -76,8 +105,9 @@ export function ReplyComment({
   userData,
   removeShowBox,
   setNotify,
+  updateChildComments,
 }) {
-  const { video_id, course_id, comment_id } = commentData;
+  const { video_id, course_id, comment_id, comment_user } = commentData;
   const commentArea = useRef();
   const [commentText, setCommentText] = useState(null);
   const [height, setHeight] = useState("auto");
@@ -112,6 +142,7 @@ export function ReplyComment({
       );
       if (response.authType == 200) {
         setNotify(response.message);
+        updateChildComments((prev) => [...prev, replyCommentData]);
         removeShowBox(false);
       }
     } else {
@@ -122,7 +153,7 @@ export function ReplyComment({
   return (
     <>
       <form className={style.commentBox} onSubmit={sendComment}>
-        <span>Leave a Comment</span>
+        <span>Replying to {comment_user}</span>
         <textarea
           onChange={commentFetching}
           required
@@ -131,8 +162,29 @@ export function ReplyComment({
           placeholder="Add your comment"
         ></textarea>
         <button type="submit">Comment</button>
-        <button>Cancel</button>
+        <button onClick={() => removeShowBox(false)}>Cancel</button>
       </form>
     </>
+  );
+}
+
+export function SingleReply({ commentData }) {
+  return (
+    <div className={style.reply_comment}>
+      <div className={style.comment_item_top}>
+        <div className={style.left}>
+          <img src={defaultImage("hi")}></img>
+        </div>
+        <div className={style.right}>
+          <span>{commentData.comment_user}</span>
+          <p>{commentData.comment}</p>
+        </div>
+      </div>
+      <div className={style.comment_item_bottom}>
+        <div className={style.button_container}></div>
+
+        <div></div>
+      </div>
+    </div>
   );
 }
