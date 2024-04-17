@@ -73,7 +73,7 @@ export function EditVideoDetails({
   return (
     <div className={style.content}>
       <form onSubmit={submitForm}>
-        <h1>Choose ThumbNail (Single)</h1>
+        <h1>Edit Video Details</h1>
 
         <div className={style.video_details}>
           <div className={style.video_text}>

@@ -30,7 +30,7 @@ export default function PlayList({ data }) {
 
     try {
       const response = await SendData(
-        "create-playlist",
+        "/admin/create-playlist",
         data,
         "multipart/form-data",
         false
@@ -49,10 +49,14 @@ export default function PlayList({ data }) {
 
   return (
     <div>
-      <button onClick={() => setIsClicked((prev) => !prev)}>
-        New Playlist
-      </button>
       <div className="course_flexbox">
+        <div className="course_flexbox_link">
+          <article className={style.playlist_card}>
+            <button onClick={() => setIsClicked((prev) => !prev)}>
+              New PlayList
+            </button>
+          </article>
+        </div>
         {playlist.length > 0 ? (
           playlist.map((item) => {
             return <PlayList_Card playlist_data={item} key={item.id} />;

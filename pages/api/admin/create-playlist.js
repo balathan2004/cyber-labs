@@ -13,7 +13,11 @@ export const config = {
 import { doc, addDoc, getDocs, collection } from "firebase/firestore";
 
 export default async function (req, res) {
-  post(req, res);
+  if (req.cookies.cyberLabs_Admin == process.env.ADMIN_NAME) {
+    post(req, res);
+  } else {
+    res.json({ error: "unauthorized access" });
+  }
 }
 
 async function post(req, res) {
@@ -40,7 +44,7 @@ async function post(req, res) {
 
       allPlaylists = await docManager(playlist_data);
       res.json({
-        message: "playlist updated",
+        message: "playlist created successfully",
         authType: 200,
         playlistName: allPlaylists,
       });

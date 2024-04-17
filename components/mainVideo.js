@@ -50,7 +50,7 @@ export default function MainVideo({
       course_id: course_id,
       comment: comment,
       comment_id: v4(),
-      comment_user: userData ? userData.displayName : "anonymous",
+      comment_user: userData ? userData.username : "anonymous",
     };
     changeComment((prev) => [...prev, data]);
     const response = await SendData("video_action/add_comment", data);

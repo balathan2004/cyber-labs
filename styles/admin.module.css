@@ -1,298 +1,342 @@
 /*
+ADMin login page
+*/
+
+
+.login_container{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items:center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+
+.loginform {
+  background: #ffffff;
+  width: 450px;
+  height: fit-content;
+  color: #4caf50;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 29px 0px #e0e0e0;
+}
+.loginform h2 {
+  font-size: 30px;
+  margin: 30px 0px;
+  text-transform: uppercase;
+  font-weight: normal;
+  text-align: center;
+}
+
+.loginform h3 {
+  font-size: 25px;
+  margin: 30px 0px;
+  text-transform: uppercase;
+  font-weight: normal;
+  text-align: center;
+}
+
+
+.loginform input {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.loginform input[type="text"],
+.loginform input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #1e5220;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #333;
+  font-size: 16px;
+}
+.loginform input[type="submit"] {
+  background: #4caf50;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.4s;
+  border: none;
+  margin-bottom: 5px;
+}
+.loginform input[type="submit"]:hover {
+  cursor: pointer;
+  background: #1f5822;
+}
+.loginform a {
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 20px;
+  color: #1e5220;
+}
+.loginform .have-not {
+  float: right;
+}
+.loginform a:hover {
+  color: #4caf50;
+}
+
+/*-- Responsive CSS --*/
+@media (max-width: 576px) {
+  .loginform {
+    width: 90%;
+  }
+  .loginform a {
+    display: block;
+    text-align: center;
+    float: inherit !important;
+  }
+}
+
+/*
 ADMin
 */
 
-.admin{
-    height: 100%;
-    width: 100%;
+.admin {
+  height: 100%;
+  width: 100%;
 }
 
 .admin header {
-  
-    width: 70%;
-    margin: auto;
+  width: 70%;
+  margin: auto;
 
-    margin-top: 2rem;
-
+  margin-top: 2rem;
 }
 
-
-.admin header ul{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+.admin header ul {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
-
-.admin header ul > li{
-    text-align: center;
-    list-style: none;
-    text-decoration: underline;
-    font-size: 20px;
-    padding: 5px 10px;
-    flex: 1;
-    margin: 1rem;
-    border-radius: 10px;
-    background-color: white;
-  
+.admin header ul > li {
+  text-align: center;
+  list-style: none;
+  text-decoration: underline;
+  font-size: 20px;
+  padding: 5px 10px;
+  flex: 1;
+  margin: 1rem;
+  border-radius: 10px;
+  background-color: white;
 }
 
-.admin header ul > li:hover{
-    cursor: pointer;
-    background-color: lightgray;
+.admin header ul > li:hover {
+  cursor: pointer;
+  background-color: lightgray;
 }
 
 .admin header ul .active {
-
-    background-color: rgb(122, 116, 116);
+  background-color: rgb(122, 116, 116);
 }
 
-.admin header ul .active:hover{
-    cursor:no-drop;
+.admin header ul .active:hover {
+  cursor: no-drop;
 }
-
-
 
 /* create playlist */
 
-.create_playlist{
-    position: absolute;
-   width: 500px;
-   height: max-content;
-   padding: 10px;
-   z-index: 1;
-   top: 20%;
-   left: 30%;
-   border: 1px solid black;
-   backdrop-filter: blur(10px);
-   -webkit-backdrop-filter: blur(10px);
+.create_playlist {
+  position: absolute;
+  width: 500px;
+  height: max-content;
+  padding: 10px;
+  z-index: 1;
+  top: 20%;
+  left: 30%;
+  border: 1px solid black;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-
-.create_playlist .thumbnail{
-    position: relative;
+.create_playlist .thumbnail {
+  position: relative;
 }
 
-.create_playlist .thumbnail input{
-    display: none;
-
+.create_playlist .thumbnail input {
+  display: none;
 }
 
-.create_playlist .thumbnail img{
-    display: block;
-    width: 100%;
-    
+.create_playlist .thumbnail img {
+  display: block;
+  width: 100%;
 }
 
-.create_playlist .thumbnail label{
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    padding: 10px;
-    background-color: lightgray;
-    border-radius: 10px;
+.create_playlist .thumbnail label {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 10px;
 }
 
-
-
-.create_playlist  input[type="text"], .create_playlist  textarea, .create_playlist  button{
-    display: block;
-    width: 90%;
-    margin: 1rem auto;
+.create_playlist input[type="text"],
+.create_playlist textarea,
+.create_playlist button {
+  display: block;
+  width: 90%;
+  margin: 1rem auto;
 }
 
-.create_playlist  input[type="text"]{
-    height: 40px;
-    font-size: 20px;
+.create_playlist input[type="text"] {
+  height: 40px;
+  font-size: 20px;
 }
 
-
-.create_playlist  textarea{
-    height: 60px;
-    font-size: 18px;
+.create_playlist textarea {
+  height: 60px;
+  font-size: 18px;
 }
 
-.create_playlist  button{
-    height: 40px;
-
+.create_playlist button {
+  height: 40px;
 }
-
-
 
 /* create video */
 
-.content{
-    height: 100%;
-    width: 100%;
+.content {
+  height: 100%;
+  width: 100%;
 }
 
-
- 
 .content .video_details {
-    width: 600px;
-    height: 100%;
-    
-   
+  width: 600px;
+  height: 100%;
 }
 
-.content .video_details img{
-    width: 100%;
-    display: block;
-    aspect-ratio: 16/9;
+.content .video_details img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
 }
 
-.content .video_details .thumbnail{
-   position: relative;
+.content .video_details .thumbnail {
+  position: relative;
 }
 
-
-
-.content .video_text textarea{
-resize: none;
-width: 100%;
-height: 60px;
-display: block;
-margin-top: 0.5rem;
+.content .video_text textarea {
+  resize: none;
+  width: 100%;
+  height: 60px;
+  display: block;
+  margin-top: 0.5rem;
 }
 
-
-.content label{
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    right: 70%;    
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 10px;
-    background-color: rgb(215, 215, 215);
-
+.content label {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 70%;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: rgb(215, 215, 215);
 }
-.content  .video_text button{
-    width: 100%;
-    margin-top: 1rem;
-    height: 40px;
+.content .video_text button {
+  width: 100%;
+  margin-top: 1rem;
+  height: 40px;
 }
-
-
-
 
 /* admin card */
 
-
-
-.playlist_card{
-    margin: 10px;
-     display: block;
-     
+.playlist_card {
+  margin: 10px;
+  display: block;
 }
 
-
-.playlist_card .content{
-    gap: 10px;
-    text-transform: capitalize;
-    color: black;
-
+.playlist_card .content {
+  gap: 10px;
+  text-transform: capitalize;
+  color: black;
 }
 
-.playlist_card .content_details{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+.playlist_card .content_details {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
-.playlist_card .content_details .right{
-    display: flex;
-    flex-direction: column;
-
+.playlist_card .content_details .right {
+  display: flex;
+  flex-direction: column;
 }
 
-.playlist_card .content_details h1{
+.playlist_card .content_details h1 {
   height: 50%;
   font-size: 16px;
 }
 
-
-.playlist_card .content_details span{
-    height: 50%;
-   font-size: 16px;
-   display: block;
-
-
+.playlist_card .content_details span {
+  height: 50%;
+  font-size: 16px;
+  display: block;
 }
 
-.playlist_card .content_details p{
-   font-size: 16px;
-   
+.playlist_card .content_details p {
+  font-size: 16px;
 }
 
-.playlist_card .content_details img{
-    height: 50px;
-    display: block;
-    width: 50px;
-    border-radius: 50%;
-    
- }
-
-
-.playlist_card img{
-width: 100%;
-aspect-ratio: 16/9;
-object-fit: cover;
-border-radius: 10px;
+.playlist_card .content_details img {
+  height: 50px;
+  display: block;
+  width: 50px;
+  border-radius: 50%;
 }
 
-
-
+.playlist_card img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
 .container .video_list {
-    background: #fff;
-    border-radius: 5px;
-    height: 85vh;
-    overflow-y: scroll;
-    padding: 10px 20px 10px 10px;
-  }
+  background: #fff;
+  border-radius: 5px;
+  height: 85vh;
+  overflow-y: scroll;
+  padding: 10px 20px 10px 10px;
+}
 
-
-
-
-
-
-  /*
+/*
   admin video 
   */
 
-
-  .admin_video{
-    max-height: 100vh;
-    display: flex;
-    gap: 1rem;
-  }
-
-.admin_video .video_content{
-    width: 40%;
+.admin_video {
+  max-height: 100vh;
+  display: flex;
+  gap: 1rem;
 }
 
-  .admin_video video {
-    width: 100%;
-  }
+.admin_video .video_content {
+  width: 40%;
+}
 
+.admin_video video {
+  width: 100%;
+}
 
-  /*
+/*
   admin  video  page
   */
 
-  .video_page button{
-    height: 35px;
-    width: 150px;
-    margin: 1rem 1rem 0 0;
-    border-radius: 8px;
-    border: 1px solid rgb(95, 91, 91);
-  }
+.video_page button {
+  height: 35px;
+  width: 150px;
+  margin: 1rem 1rem 0 0;
+  border-radius: 8px;
+  border: 1px solid rgb(95, 91, 91);
+}
 
-
-  .video_page .active_button{
-    background-color: skyblue;
-  }
-
-
-
+.video_page .active_button {
+  background-color: skyblue;
+}

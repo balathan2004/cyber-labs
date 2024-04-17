@@ -130,7 +130,7 @@ export function ReplyComment({
       const replyCommentData = {
         comment: commentText,
         comment_id: comment_id,
-        comment_user: userData ? userData.displayName : "anonymous",
+        comment_user: userData ? userData.username : "anonymous",
         course_id: course_id,
         time: modifiedTime,
         video_id: video_id,
@@ -169,11 +169,12 @@ export function ReplyComment({
 }
 
 export function SingleReply({ commentData }) {
+  console.log(commentData);
   return (
     <div className={style.reply_comment}>
       <div className={style.comment_item_top}>
         <div className={style.left}>
-          <img src={defaultImage("hi")}></img>
+          <img src={defaultImage(commentData.comment_user)}></img>
         </div>
         <div className={style.right}>
           <span>{commentData.comment_user}</span>
