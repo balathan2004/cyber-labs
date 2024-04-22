@@ -2,14 +2,22 @@ import { firestore } from "@/config";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 
 export default async function (req, res) {
-  const { course_id, video_id, comment_id, comment, comment_user, time } =
-    JSON.parse(req.body);
+  const {
+    course_id,
+    video_id,
+    comment_id,
+    comment,
+    comment_user,
+    time,
+    comment_reply,
+  } = JSON.parse(req.body);
 
   var docName = `${course_id}@${video_id}`;
 
   const docRef = doc(firestore, "comments", docName);
 
   const docData = (await getDoc(docRef)).data();
+  console.log(docData);
 
   const docComment = docData.comment.find(
     (file) => file.comment_id == comment_id
@@ -25,6 +33,7 @@ export default async function (req, res) {
       comment_id: comment_id,
       comment_user: comment_user,
       time: time,
+      comment_reply: comment_reply,
     };
 
     docComment.hasReplies.push(replyData);

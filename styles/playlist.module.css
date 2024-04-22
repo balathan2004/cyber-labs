@@ -115,6 +115,16 @@
 
 .comment_item_top .right span {
   font-weight: 600;
+  margin-right: 1rem;
+}
+
+.comment_item_top .right .comment_time{
+  font-size: 400;
+  font-size: 16px;
+}
+
+.comment_item_top .right .user_mention{
+  margin-right: 1rem;
 }
 
 .comment_item .comment_item_bottom {

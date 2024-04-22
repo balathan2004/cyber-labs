@@ -3,7 +3,8 @@ import moment from "moment";
 import React, { useState, useRef } from "react";
 import SendData from "./sendData";
 import { defaultImage } from "./smallComponents";
-
+import { SingleReply } from "./replyComment";
+import { TimeSetter } from "./smallComponents";
 export function SmallCard({
   mainVideoData,
   data,
@@ -39,7 +40,7 @@ export function SmallCard({
 }
 
 export function CommentList({ commentData, userData, setNotify }) {
-  console.log(commentData);
+  const { course_id, video_id } = commentData;
   const [showReplyBox, setShowReplyBox] = useState(false);
   const [isCommentShow, setIsCommentShow] = useState(false);
   const [commentChild, setCommentChild] = useState(
@@ -66,6 +67,7 @@ export function CommentList({ commentData, userData, setNotify }) {
         <div className={style.right}>
           <span>{commentData.comment_user}</span>
           <p>{commentData.comment}</p>
+          <span>{TimeSetter(commentData.time)}</span>
         </div>
       </div>
       <div className={style.comment_item_bottom}>
@@ -80,7 +82,17 @@ export function CommentList({ commentData, userData, setNotify }) {
         <div>
           {isCommentShow
             ? commentChild.map((ele, index) => {
-                return <SingleReply commentData={ele} key={index} />;
+                return (
+                  <SingleReply
+                    commentData={ele}
+                    key={index}
+                    userData={userData}
+                    setNotify={setNotify}
+                    updateChildComments={setCommentChild}
+                    course_id={course_id}
+                    video_id={video_id}
+                  />
+                );
               })
             : null}
         </div>
@@ -92,6 +104,8 @@ export function CommentList({ commentData, userData, setNotify }) {
               setNotify={setNotify}
               updateChildComments={setCommentChild}
               removeShowBox={setShowReplyBox} //hide after comment
+              course_id={course_id}
+              video_id={video_id}
             />
           ) : null}
         </div>
@@ -131,10 +145,13 @@ export function ReplyComment({
         comment: commentText,
         comment_id: comment_id,
         comment_user: userData ? userData.username : "anonymous",
-        course_id: course_id,
         time: modifiedTime,
+        comment_reply: comment_user,
+        course_id: course_id,
         video_id: video_id,
       };
+
+      console.log(replyCommentData);
 
       const response = await SendData(
         "/video_action/reply_comment",
@@ -165,27 +182,5 @@ export function ReplyComment({
         <button onClick={() => removeShowBox(false)}>Cancel</button>
       </form>
     </>
-  );
-}
-
-export function SingleReply({ commentData }) {
-  console.log(commentData);
-  return (
-    <div className={style.reply_comment}>
-      <div className={style.comment_item_top}>
-        <div className={style.left}>
-          <img src={defaultImage(commentData.comment_user)}></img>
-        </div>
-        <div className={style.right}>
-          <span>{commentData.comment_user}</span>
-          <p>{commentData.comment}</p>
-        </div>
-      </div>
-      <div className={style.comment_item_bottom}>
-        <div className={style.button_container}></div>
-
-        <div></div>
-      </div>
-    </div>
   );
 }
