@@ -52,12 +52,9 @@ export function CommentList({ commentData, userData, setNotify }) {
   };
 
   const showBox = () => {
-    setShowReplyBox(true);
+    setShowReplyBox((prev) => !prev);
   };
 
-  const hideBox = () => {
-    setShowReplyBox(false);
-  };
   return (
     <div className={style.comment_item}>
       <div className={style.comment_item_top}>
@@ -65,51 +62,53 @@ export function CommentList({ commentData, userData, setNotify }) {
           <img src={defaultImage(commentData.comment_user)}></img>
         </div>
         <div className={style.right}>
-          <span>{commentData.comment_user}</span>
-          <p>{commentData.comment}</p>
-          <span>{TimeSetter(commentData.time)}</span>
+          <div className={style.right_top}>
+            <span>{commentData.comment_user}</span>
+            <span className={style.comment_time}>
+              {TimeSetter(commentData.time)}
+            </span>
+            <p>{commentData.comment}</p>
+          </div>
+          <div className={style.comment_item_bottom}>
+            <div className={style.button_container}>
+              <span onClick={showBox}>{!showReplyBox ? "Reply" : "Hide"} </span>
+              {commentChild.length > 0 ? (
+                <span onClick={commentHandler}>
+                  {isCommentShow ? "hide replies" : "see all comments"}
+                </span>
+              ) : null}
+            </div>
+          </div>
         </div>
       </div>
-      <div className={style.comment_item_bottom}>
-        <div className={style.button_container}>
-          {!showReplyBox ? <button onClick={showBox}>Reply</button> : null}
-          {commentChild.length > 0 ? (
-            <button onClick={commentHandler}>
-              {isCommentShow ? "hide replies" : "see all comments"}
-            </button>
-          ) : null}
-        </div>
-        <div>
-          {isCommentShow
-            ? commentChild.map((ele, index) => {
-                return (
-                  <SingleReply
-                    commentData={ele}
-                    key={index}
-                    userData={userData}
-                    setNotify={setNotify}
-                    updateChildComments={setCommentChild}
-                    course_id={course_id}
-                    video_id={video_id}
-                  />
-                );
-              })
-            : null}
-        </div>
-        <div>
-          {showReplyBox ? (
-            <ReplyComment
-              commentData={commentData}
-              userData={userData}
-              setNotify={setNotify}
-              updateChildComments={setCommentChild}
-              removeShowBox={setShowReplyBox} //hide after comment
-              course_id={course_id}
-              video_id={video_id}
-            />
-          ) : null}
-        </div>
+      <div>
+        {isCommentShow
+          ? commentChild.map((ele, index) => {
+              return (
+                <SingleReply
+                  commentData={ele}
+                  key={index}
+                  userData={userData}
+                  setNotify={setNotify}
+                  updateChildComments={setCommentChild}
+                  course_id={course_id}
+                  video_id={video_id}
+                />
+              );
+            })
+          : null}
       </div>
+      {showReplyBox ? (
+        <ReplyComment
+          commentData={commentData}
+          userData={userData}
+          setNotify={setNotify}
+          updateChildComments={setCommentChild}
+          removeShowBox={setShowReplyBox} //hide after comment
+          course_id={course_id}
+          video_id={video_id}
+        />
+      ) : null}
     </div>
   );
 }

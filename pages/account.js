@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import style from "/styles/account.module.css";
+import { deleteCookie } from "cookies-next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import AccountInput from "@/components/accountInput";
 import SendData from "@/components/sendData";
-import { LoaderProvider } from "./_app";
+import { LoaderProvider, NotificationProvider, NavBarProvider } from "./_app";
 import { defaultImage } from "@/components/smallComponents";
+import { useRouter } from "next/router";
 export default function Account() {
   const [loginCred, setLoginCred] = useState({
     email: "",
@@ -14,7 +16,12 @@ export default function Account() {
     username: "",
   });
 
+  const navi = useRouter();
+
   const [loader, setLoader] = useContext(LoaderProvider);
+  const [notify, setNotify] = useContext(NotificationProvider);
+  const [dirs, setDirs] = useContext(NavBarProvider);
+
   const [image, setImage] = useState({ file: [] });
   const [imageChange, setImageChange] = useState(false);
   const [showImage, setShowImage] = useState(null);
@@ -38,6 +45,15 @@ export default function Account() {
     const response = await SendData("/update-user", loginCred);
     console.log(response);
     setLoader(false);
+  };
+
+  const Logout = () => {
+    localStorage.removeItem("cyberLabs_Data");
+    deleteCookie("cyberLabs_uid");
+    setNotify("Logged out successfully");
+
+    setDirs("login");
+    navi.push("/");
   };
 
   useEffect(() => {
@@ -111,6 +127,10 @@ export default function Account() {
             />
 
             <button type="submit">Save Info</button>
+            <button type="button" onClick={Logout}>
+              {" "}
+              Logout
+            </button>
           </div>
         </form>
       </div>

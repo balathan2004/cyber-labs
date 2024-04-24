@@ -21,39 +21,40 @@ export function SingleReply({
           <img src={defaultImage(commentData.comment_user)}></img>
         </div>
         <div className={style.right}>
-          <div className={style.comment_info}>
+          <div className={style.right_top}>
             <span>{commentData.comment_user}</span>
-            <span>{TimeSetter(commentData.time)}</span>
+            <span className={style.comment_time}>
+              {TimeSetter(commentData.time)}
+            </span>
+            <p>
+              {" "}
+              <span className={style.user_mention}>
+                {commentData.comment_reply}
+              </span>
+              {commentData.comment}
+            </p>
           </div>
 
-          <p>
-            {" "}
-            <span className={style.user_mention}>
-              @{commentData.comment_reply}
-            </span>
-            {commentData.comment}
-          </p>
+          <div className={style.comment_item_bottom}>
+            <div className={style.button_container}>
+              <span onClick={() => setShowReplyBox((prev) => !prev)}>
+                Reply
+              </span>
+            </div>
+          </div>
         </div>
       </div>
-      <div className={style.comment_item_bottom}>
-        <div className={style.button_container}>
-          <button onClick={() => setShowReplyBox((prev) => !prev)}>
-            Reply
-          </button>
-        </div>
-        {showReplyBox ? (
-          <NestedComment
-            commentData={commentData}
-            userData={userData}
-            removeShowBox={setShowReplyBox}
-            setNotify={setNotify}
-            updateChildComments={updateChildComments}
-            course_id={course_id}
-            video_id={video_id}
-          />
-        ) : null}
-        <div></div>
-      </div>
+      {showReplyBox ? (
+        <NestedComment
+          commentData={commentData}
+          userData={userData}
+          removeShowBox={setShowReplyBox}
+          setNotify={setNotify}
+          updateChildComments={updateChildComments}
+          course_id={course_id}
+          video_id={video_id}
+        />
+      ) : null}
     </div>
   );
 }
@@ -114,7 +115,7 @@ export function NestedComment({
   };
 
   return (
-    <>
+    <div className={style.commentbox_filler}>
       <form className={style.commentBox} onSubmit={sendComment}>
         <span>Replying to {comment_user}</span>
         <textarea
@@ -127,6 +128,6 @@ export function NestedComment({
         <button type="submit">Comment</button>
         <button onClick={() => removeShowBox(false)}>Cancel</button>
       </form>
-    </>
+    </div>
   );
 }

@@ -35,6 +35,10 @@ export default function MainVideo({
     setShowCommentBox((prev) => !prev);
   };
 
+  const clearTextArea = () => {
+    commentArea.current.value = "";
+  };
+
   const commentFetching = (event) => {
     var commentValue = event.target.value;
     setHeight("auto"); // Reset height to auto to recalculate the height based on content
@@ -57,6 +61,7 @@ export default function MainVideo({
     if (response.message) {
       commentArea.current.value = "";
       setNotify("Comment Added");
+      setHeight("40px");
     }
   };
 
@@ -85,10 +90,12 @@ export default function MainVideo({
               placeholder="Add your comment"
             ></textarea>
             <button type="submit">Comment</button>
-            <button>Cancel</button>
+            <button type="button" onClick={clearTextArea}>
+              Cancel
+            </button>
           </form>
           <span className={style.toggler} onClick={handleToggler}>
-            Show Comments
+            {!showCommentBox ? "Show Comments" : "Hide Comments"}
           </span>
           <div
             className={
