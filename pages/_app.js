@@ -9,8 +9,10 @@ export const NotificationProvider = React.createContext();
 import GetRequest from "@/components/getRequest";
 import { getCookie } from "cookies-next";
 import Loading from "@/components/loading";
+import NavBar from "@/components/navbar";
+
 export default function App({ Component, pageProps }) {
-  const [dirs, setDirs] = useState("login");
+  const [isLogin, setIsLogin] = useState("login");
   const [loader, setLoader] = useState(false);
   const [userData, setUserData] = useState(null);
   const [notify, setNotify] = useState(null);
@@ -19,12 +21,10 @@ export default function App({ Component, pageProps }) {
     try {
       let res = await GetRequest("login-cred");
       if (!res.error) {
-        //console.log(res);
         setUserData(res.message);
         localStorage.setItem("cyberLabs_Data", JSON.stringify(res.message));
         const checkCookie = getCookie("cyberLabs_uid");
-        //console.log(checkCookie);
-        setDirs(checkCookie ? "account" : "login");
+        setIsLogin(checkCookie ? "account" : "login");
       }
     } catch (err) {
       console.log(err);
@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <div className="container">
-      <NavBarProvider.Provider value={[dirs, setDirs]}>
+      <NavBarProvider.Provider value={[isLogin, setIsLogin]}>
         <LoaderProvider.Provider value={[loader, setLoader]}>
           <NotificationProvider.Provider value={[notify, setNotify]}>
             <UserCred.Provider value={userData}>
@@ -45,6 +45,7 @@ export default function App({ Component, pageProps }) {
                 <Notification notify={notify} setNotify={setNotify} />
               ) : null}
               {loader ? <Loading /> : null}
+              <NavBar />
               <Component {...pageProps} />
             </UserCred.Provider>
           </NotificationProvider.Provider>

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { NavBarProvider } from "@/pages/_app";
 
 export default function Welcome() {
-  const [dirs, setDirs] = useContext(NavBarProvider);
+  const [isLogin, setIsLogin] = useContext(NavBarProvider);
   const navi = useRouter();
 
   const [response, setResponse] = useState("");
@@ -15,7 +15,7 @@ export default function Welcome() {
     if (response) {
       if (response.message && response.data) {
         localStorage.setItem("cyberLabs_Data", JSON.stringify(response.data));
-        setDirs("account");
+        setIsLogin("account");
         navi.push("/account");
       } else if (response.error) {
         console.log(response.error, "error");
