@@ -53,6 +53,9 @@ export default function NavBar() {
         <label htmlFor="check" className={styles.checkbtn}>
           <FontAwesomeIcon icon={faBars} />
         </label>
+        <a href="/" className={styles.brand}>
+          Rational Cyberlabs
+        </a>
 
         <ul className={styles.uls}>
           {NavRoutes.map((x) => {
