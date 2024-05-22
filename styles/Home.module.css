@@ -94,9 +94,10 @@ font-size: 20px;
 }
 
 .page{
-  height: 100vh;
-  max-height: max-content;
-  max-height: -moz-fit-content;
+  min-height: 100vh;
+  height: auto;
+  max-height:100%;
+
   background-color: white;
   color: black;
   width: 100%;
@@ -116,7 +117,7 @@ font-size: 20px;
 }
 
 .page .background{
-  height: 70%;
+  min-height: 100vh;
   background-image: url("https://as1.ftcdn.net/v2/jpg/01/41/70/02/1000_F_141700287_vUkvJe2wqztbNPxpr9fgmIWN64lcfDjQ.jpg");
   background-size: cover;
 
@@ -234,6 +235,7 @@ margin: 1rem;
   display: flex;
   justify-content: space-between;
   padding: 20px 20px 0 50px;
+  background-color: white;
 }
   
 .page .feed_footer .left_footer{
@@ -323,8 +325,26 @@ flex: 1;
 
 
   .page .content{
-    width: 80%;
+    width: 95%;
+    
   }
+
+
+  .page .content article header{
+    
+    font-size: 20px;
+    }
+    
+    .page .content article main{
+      
+      font-size: 18px;
+    }
+    
+    .page .content article footer a{
+      font-size: 18px;
+    }
+
+
 
 .feed .first{
   flex: 1;
@@ -339,10 +359,11 @@ flex: 1;
 .page .feed_footer{
 flex-direction: column;
 align-items: center;
-padding: 10px 0px;
-margin: auto;
-width: 90%;
+height: auto;
 }
+
+
+  
 
 .page .feed_footer .left_footer{
   margin-bottom: 2rem;
@@ -363,7 +384,15 @@ width: 90%;
 }
 
 .nav_center span{
-  display: none;
+color: red;
+}
+
+ .head_content h1{
+  font-size: 22px;
+}
+
+.slider .slide h1{
+  font-size: 20px;
 }
 
 }
