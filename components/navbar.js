@@ -41,42 +41,42 @@ export default function NavBar() {
   }, [inputValue]);
 
   return (
-    <div>
-      <nav className={styles.nav}>
-        <input
-          className={styles.input}
-          type="checkbox"
-          id="check"
-          onChange={setInput}
-          checked={inputValue}
-        ></input>
-        <label htmlFor="check" className={styles.checkbtn}>
-          <FontAwesomeIcon icon={faBars} />
-        </label>
-        <a href="/" className={styles.brand}>
-          Rational Cyberlabs
-        </a>
+    <nav className={styles.nav}>
+      <input
+        className={styles.input}
+        type="checkbox"
+        id="check"
+        onChange={setInput}
+        checked={inputValue}
+      ></input>
+      <label htmlFor="check" className={styles.checkbtn}>
+        <FontAwesomeIcon icon={faBars} />
+      </label>
+      <a href="/" className={styles.brand}>
+        Rational Cyberlabs
+      </a>
 
-        <ul className={styles.uls}>
-          {NavRoutes.map((x) => {
-            if (x.title != currentRoute) {
-              return (
-                <li key={x.route} id={x.route}>
-                  <Link href={x.route}>{x.title}</Link>
-                </li>
-              );
-            } else {
-              return (
-                <li key={x.route} id={x.route}>
-                  <Link href={x.route} className={styles.active}>
-                    {x.title}
-                  </Link>
-                </li>
-              );
-            }
-          })}
-        </ul>
-      </nav>
-    </div>
+      <ul className={styles.uls}>
+        {NavRoutes.map((x) => {
+          if (x.title != currentRoute) {
+            return (
+              <li key={x.route} id={x.route}>
+                <Link href={x.route} onClick={changeInput}>
+                  {x.title}
+                </Link>
+              </li>
+            );
+          } else {
+            return (
+              <li key={x.route} id={x.route}>
+                <Link href={x.route} className={styles.active}>
+                  {x.title}
+                </Link>
+              </li>
+            );
+          }
+        })}
+      </ul>
+    </nav>
   );
 }

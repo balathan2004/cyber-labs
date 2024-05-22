@@ -11,23 +11,11 @@ import React, { Component, useContext } from "react";
 export default function Home() {
   const [dirs, setDirs] = useContext(NavBarProvider);
   return (
-    <div className="container">
+    <div className="pad_container">
       <div className={styles.container}>
         <div className={`${styles.page} ${styles.page_one}`}>
           <header className={styles.firsthead}>
-            <div className={styles.navs}>
-              <div className={styles.nav_left}>
-                <a href="/courses">Courses</a>
-                <a>About</a>
-                <a>Contact</a>
-              </div>
-              <div className={styles.nav_center}>
-                <span>Rational CyberLabs</span>
-              </div>
-              <div className={styles.nav_right}>
-                <a href={`/${dirs}`}>{dirs}</a>
-              </div>
-            </div>
+            <div className={styles.navs}></div>
             <div className={styles.head_content}>
               <h1>Rational Cyberlabs</h1>
             </div>

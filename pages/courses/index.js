@@ -3,7 +3,7 @@ import style from "/styles/course.module.css";
 import PlayList_Card from "@/components/playlist-card";
 export default function Courses({ data }) {
   return (
-    <div>
+    <div className="pad_container">
       <h1 className="title">Courses</h1>
 
       <div className="course_flexbox">

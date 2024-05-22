@@ -28,7 +28,7 @@ export default function AdminVideo({ playlistData }) {
   }, [changeVideoQuery]);
 
   return (
-    <>
+    <div className="pad_container">
       <MainVideo
         videoData={playlistData}
         course_id={course_id}
@@ -37,8 +37,7 @@ export default function AdminVideo({ playlistData }) {
         currentVideo={changeVideoQuery}
         changeVideoQuery={setChangeVideoQuery}
       />
-      ;
-    </>
+    </div>
   );
 }
 

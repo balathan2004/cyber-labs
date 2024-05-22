@@ -11,7 +11,7 @@ export default function Page({ data }) {
   const currentPlaylist = router.query.id;
   console.log(currentPlaylist);
   return (
-    <div>
+    <div className="pad_container">
       <h1 className="title">{playlist_info.playlist_name}</h1>
       <div className="course_flexbox">
         {videos.map((x) => (

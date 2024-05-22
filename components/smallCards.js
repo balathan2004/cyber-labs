@@ -25,7 +25,6 @@ export function SmallCard({
       className={isActive ? style.selected_box : style.box}
       onClick={videoChanger}
     >
-      <h1></h1>
       <img src={data.video_thumbnail}></img>
       <span></span>
       <div className={style.box1_text}>

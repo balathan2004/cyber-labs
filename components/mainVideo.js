@@ -116,7 +116,6 @@ export default function MainVideo({
 
       <div className={style.white_box}>
         <div className={style.line1}>
-          <br />
           <p>{playListName.toUpperCase()}</p>
           <p>Rational Cyberlabs</p>
           <span>{allVideos.length} videos</span>

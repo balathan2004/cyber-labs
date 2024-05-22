@@ -41,7 +41,6 @@ export default function Account() {
   const handler = async (event) => {
     event.preventDefault();
     setLoader(true);
-
     const response = await SendData("/update-user", loginCred);
     console.log(response);
     setLoader(false);
