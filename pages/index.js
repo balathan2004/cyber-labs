@@ -10,153 +10,137 @@ import { NavBarProvider } from "./_app";
 import React, { Component, useContext } from "react";
 export default function Home() {
   const [dirs, setDirs] = useContext(NavBarProvider);
+  //./images/logo.jpg
   return (
-    <div className="pad_container">
-      <div className={styles.container}>
-        <div className={`${styles.page} ${styles.page_one}`}>
-          <header className={styles.firsthead}>
-            <div className={styles.navs}></div>
-            <div className={styles.head_content}>
-              <h1>Rational Cyberlabs</h1>
-            </div>
-          </header>
-          <div className={styles.temp}>
-            <span>our moto</span>
+    <div>
+      <section className={styles.header}>
+        <div className={styles.text_box}>
+          <h1>RATIONAL CYBERLABS</h1>
+          <p>EDUCATE - UNITE - REVOLUTIONIZE</p>
+          <a href="" className={styles.hero_btn}>
+            Visit Us to Know More
+          </a>
+        </div>
+      </section>
+      <section className={styles.course}>
+        <h1>Courses We Offer</h1>
+        <p>The Offersv are only Techinical Domains .</p>
+        <div className={styles.row}>
+          <div className={styles.course_col}>
+            <h3>SEMINAR</h3>
           </div>
-          <div className={styles.slider}>
-            <div className={styles.slide_track}>
-              <div className={styles.slide}>
-                <h1>Educate</h1>
-              </div>
-              <div className={styles.slide}>
-                <h1>Unite</h1>
-              </div>
-              <div className={styles.slide}>
-                <h1 className={styles.last}>Revolutionize</h1>
-              </div>
-              <div className={styles.slide}>
-                <h1>Educate</h1>
-              </div>
-              <div className={styles.slide}>
-                <h1>Unite</h1>
-              </div>
-              <div className={styles.slide}>
-                <h1 className={styles.last}>Revolutionize</h1>
-              </div>
-              <div className={styles.slide}>
-                <h1>Educate</h1>
-              </div>
-              <div className={styles.slide}>
-                <h1>Unite</h1>
-              </div>
-              <div className={styles.slide}>
-                <h1 className={styles.last}>Revolutionize</h1>
-              </div>
+          <div className={styles.course_col}>
+            <h3>WEBINAR</h3>
+          </div>
+          <div className={styles.course_col}>
+            <h3>TECHTALK</h3>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.campus}>
+        <h1>OUR DOMAINS</h1>
+        <p> Our special domains</p>
+        <div className={styles.row}>
+          <div className={styles.campus_col}>
+            <img src="/images/cyber security.png" alt="" />
+            <div className={styles.layer}>
+              <h3>CYBER SECURITY</h3>
+            </div>
+          </div>
+          <div className={styles.campus_col}>
+            <img src="/images/ethical hacking.jpg" alt="" />
+            <div className={styles.layer}>
+              <h3>ETHICAL HACKING</h3>
+            </div>
+          </div>
+          <div className={styles.campus_col}>
+            <img src="/images/AI.png" alt="" />
+            <div className={styles.layer}>
+              <h3>ARTIFICIAL INTELLIGENCE</h3>
             </div>
           </div>
         </div>
+      </section>
 
-        <div className={`${styles.page} ${styles.page_two}`}>
-          <div className={styles.background}></div>
-          <div className={styles.content}>
-            <article>
-              <header>Get to know our brand</header>
-              <main>
-                Discover the awesome stories behind our team of cyber security
-                experts. We're here to share technical news and information, and
-                raise awareness about online security. We're not just any
-                ordinary page - we're a platform dedicated to empowering and
-                educating college and school students on cyber security. So, get
-                ready to dive into the fascinating world of cyber security with
-                us. Let the adventure begin!
-              </main>
-              <footer>
-                <a>Explore Now</a>
-              </footer>
-            </article>
+      <section className={styles.facilities}>
+        <h1>OUR DOMAINS</h1>
+        <p>our Technical Domains.</p>
+        <div className={styles.row}>
+          <div className={styles.campus_col}>
+            <img src="/images/IOT.webp" alt="" />
+            <div className={styles.layer}>
+              <h3>INTERNET OF THINGS</h3>
+            </div>
+          </div>
+          <div className={styles.campus_col}>
+            <img src="/images/hh.png" alt="" />
+            <div className={styles.layer}>
+              <h3>HARDWARE HACKING</h3>
+            </div>
+          </div>
+          <div className={styles.campus_col}>
+            <img src="/images/london.png" alt="" />
+            <div className={styles.layer}>
+              <h3>DOMAIN SOOOOON...!</h3>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className={styles.page}>
-          <div className={styles.feed}>
-            <div className={styles.first}>
-              <header>
-                <h1>Get In Touch!</h1>
-              </header>
-              <main>
-                <form>
-                  <div className={styles.inputBox}>
-                    <label>First name</label>
-                    <input type="text" name="firstname" />
-                  </div>
-                  <div className={styles.inputBox}>
-                    <label>Last name</label>
-                    <input type="text" name="lastname" />
-                  </div>
-                  <div className={styles.inputBox}>
-                    <label>Email </label>
-                    <input type="email" name="email" />
-                  </div>
-                  <div className={styles.inputBox}>
-                    <label>Phone</label>
-                    <input type="text" name="phone" />
-                  </div>
-                  <div className={styles.inputBox}>
-                    <input
-                      type="submit"
-                      value="Send"
-                      className={styles.button}
-                    ></input>
-                  </div>
-                </form>
-              </main>
+      <section className={styles.testimonials}>
+        <h1>CHECKOUT OUR TEAM</h1>
+
+        <div className={styles.row}>
+          <div className={styles.testimonial_col}>
+            <img src="/images/domi.jpg" alt="" />
+            <div>
+              <p>EXECUTIVE CONTROLLER</p>
+              <h3>EZHILAN</h3>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
             </div>
-            <div className={styles.second}></div>
           </div>
-
-          <footer className={styles.feed_footer}>
-            <div className={styles.left_footer}>
-              <h1>Rational CyberLabs</h1>
-              <div className={styles.icons}>
-                <FontAwesomeIcon className={styles.icon} icon={faFacebook} />
-                <FontAwesomeIcon className={styles.icon} icon={faInstagram} />
-                <FontAwesomeIcon className={styles.icon} icon={faTwitter} />
-                <FontAwesomeIcon className={styles.icon} icon={faWhatsapp} />
-              </div>
+          <div className={styles.testimonial_col}>
+            <img src="/images/viki.jpg" alt="" />
+            <div>
+              <p>EXECUTIVE SUPERVISER</p>
+              <h3>VIGNESH</h3>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
             </div>
-            <div className={styles.right_footer}>
-              <div className={styles.right_one}>
-                <h3>Category</h3>
-                <ul>
-                  <li>link 1</li>
-                  <li>link 1</li>
-                  <li>link 1</li>
-                </ul>
-              </div>
-              <div className={styles.right_two}>
-                <h3>Category</h3>
-                <ul>
-                  <li>link 1</li>
-                  <li>link 1</li>
-                  <li>link 1</li>
-                </ul>
-              </div>
-            </div>
-          </footer>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className={styles.cta}>
+        <h1>Endroll For Our Various Online Courses</h1>
+        <a href="" className="hero-btn">
+          CONTACT US
+        </a>
+      </section>
+
+      <section className={styles.footer}>
+        <h4>About Us</h4>
+        <p>EDUCATE - UNITE - REVOLUTIONISE</p>
+        <div className="icons">
+          <a href="https://www.instagram.com/rationalcyberlabs/"></a>
+          <i className="fa-brands fa-instagram"></i>
+          <a href="https://www.facebook.com/profile.php?id=61554737617494"></a>
+          <i className="fa-brands fa-facebook"></i>
+          <a href="https://chat.whatsapp.com/DYbBLgixw7DITelxUvZjDw"></a>
+          <i className="fa-brands fa-whatsapp"></i>
+        </div>
+        <p>
+          THANK<i className="fa-solid fa-heart"></i>YOU
+        </p>
+      </section>
     </div>
   );
 }
-
-/*
- <div className={styles.animation_list}>
-            <ul>
-              <li>Revolutionize</li>
-              <li>Unite</li>
-              <li>Educate</li>
-            </ul>
-          </div>
-
-        
-*/
