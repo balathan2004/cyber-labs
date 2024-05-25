@@ -8,11 +8,12 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { NavBarProvider } from "./_app";
 import React, { Component, useContext } from "react";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 export default function Home() {
   const [dirs, setDirs] = useContext(NavBarProvider);
   //./images/logo.jpg
   return (
-    <div>
+    <div className={styles.container}>
       <section className={styles.header}>
         <div className={styles.text_box}>
           <h1>RATIONAL CYBERLABS</h1>
@@ -121,7 +122,7 @@ export default function Home() {
 
       <section className={styles.cta}>
         <h1>Endroll For Our Various Online Courses</h1>
-        <a href="" className="hero-btn">
+        <a href="" className={styles.hero_btn}>
           CONTACT US
         </a>
       </section>
@@ -129,16 +130,35 @@ export default function Home() {
       <section className={styles.footer}>
         <h4>About Us</h4>
         <p>EDUCATE - UNITE - REVOLUTIONISE</p>
-        <div className="icons">
-          <a href="https://www.instagram.com/rationalcyberlabs/"></a>
-          <i className="fa-brands fa-instagram"></i>
-          <a href="https://www.facebook.com/profile.php?id=61554737617494"></a>
-          <i className="fa-brands fa-facebook"></i>
-          <a href="https://chat.whatsapp.com/DYbBLgixw7DITelxUvZjDw"></a>
-          <i className="fa-brands fa-whatsapp"></i>
+        <div className={styles.icons}>
+          <a href="https://www.instagram.com/rationalcyberlabs/">
+            <FontAwesomeIcon
+              className={styles.social_icons}
+              icon={faInstagram}
+            ></FontAwesomeIcon>
+          </a>
+
+          <a href="https://www.facebook.com/profile.php?id=61554737617494">
+            <FontAwesomeIcon
+              className={styles.social_icons}
+              icon={faFacebook}
+            ></FontAwesomeIcon>
+          </a>
+
+          <a href="https://chat.whatsapp.com/DYbBLgixw7DITelxUvZjDw">
+            <FontAwesomeIcon
+              className={styles.social_icons}
+              icon={faWhatsapp}
+            ></FontAwesomeIcon>
+          </a>
         </div>
         <p>
-          THANK<i className="fa-solid fa-heart"></i>YOU
+          THANK
+          <FontAwesomeIcon
+            className={styles.social_icons}
+            icon={faHeart}
+          ></FontAwesomeIcon>
+          YOU
         </p>
       </section>
     </div>

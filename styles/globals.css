@@ -1,11 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Noto Serif", serif;
 }
+
+
+
 
 .container {
   min-height: 100vh;
@@ -16,7 +19,7 @@
 
 .pad_container {
   flex: 1;
-  margin-top: 60px;
+  margin-top: 70px;
   height: 100%;
   width: 100%;
 }
@@ -51,7 +54,7 @@
 }
 
 .notification {
-  position: absolute;
+  position: fixed;
   top: 5%;
   right: 5%;
   width: 300px;
@@ -94,4 +97,11 @@
     height: fit-content;
     width: 90%;
   }
+}
+
+
+
+.ri--user-3-line {
+  display: inline-block;
+  color: white;
 }

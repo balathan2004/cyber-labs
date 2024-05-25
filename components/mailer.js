@@ -14,6 +14,11 @@ export default async function sendMailToAdmin(subject, data) {
     to: "balathan2vijay004@gmail.com",
     subject: subject,
     text: JSON.stringify(data),
+    html: `<h1>from : ${data.name}</h1>
+    <h1> ${data.email}</h1>
+    <h1> ${data.subject}</h1>
+    <h1> ${data.message}</h1>
+    `,
   };
 
   transport.sendMail(mailOptions, (err) => {
