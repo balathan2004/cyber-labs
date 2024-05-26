@@ -8,13 +8,12 @@ import {
 } from "firebase/auth";
 import { setCookie } from "cookies-next";
 export default async (req, res) => {
-  const auth = getAuth(app);
-  const data = JSON.parse(req.body);
+  try {
+    const auth = getAuth(app);
+    const data = JSON.parse(req.body);
 
-  if ("email" in data) {
-    console.log(data);
-    const { email, password, username, phone } = data;
-    console.log(data);
+    const { email, password, username } = data;
+
     await createUserWithEmailAndPassword(auth, email, password)
       .then(async (cred) => {
         var { uid } = cred.user;
@@ -22,7 +21,7 @@ export default async (req, res) => {
           username: username,
           email: email,
           uid: uid,
-          phone: phone,
+          phone: null,
         };
 
         await setDoc(doc(firestore, "users", uid), reDefinedData);
@@ -37,13 +36,15 @@ export default async (req, res) => {
         });
 
         res.json({
-          authType: "acc200",
+          authType: 200,
           message: "Account Created",
           data: reDefinedData,
         });
       })
       .catch((error) => {
-        res.json({ error: error.code });
+        res.json({ authType: 400, error: error.code });
       });
+  } catch (err) {
+    res.json({ authType: 400, error: err.message });
   }
 };

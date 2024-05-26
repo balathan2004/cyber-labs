@@ -1,8 +1,9 @@
 import { firestore } from "@/config";
-import { ref } from "firebase/storage";
+
 import { setCookie } from "cookies-next";
 import { setDoc, getDoc, doc } from "firebase/firestore";
 export default async (req, res) => {
+  console.log("req received");
   var data = JSON.parse(req.body);
   var { uid } = data;
   try {
@@ -19,7 +20,7 @@ export default async (req, res) => {
         secure: "true",
       });
       res.json({
-        authType: "login200",
+        authType: 200,
         message: "Login Successfully",
         data: userData,
       });
@@ -34,12 +35,13 @@ export default async (req, res) => {
         secure: "true",
       });
       res.json({
-        authType: "acc200",
+        authType: 200,
         message: "Account Created",
         data: data,
       });
     }
   } catch (e) {
-    res.json({ message: "Error", status: 400 });
+    console.log(e);
+    res.json({ message: "Error", authType: 400 });
   }
 };

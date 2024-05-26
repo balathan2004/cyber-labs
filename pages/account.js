@@ -43,6 +43,7 @@ export default function Account() {
     setLoader(true);
     const response = await SendData("/update-user", loginCred);
     console.log(response);
+    setNotify(response.message);
     setLoader(false);
   };
 

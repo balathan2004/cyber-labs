@@ -55,9 +55,10 @@
 
 .notification {
   position: fixed;
-  top: 5%;
+  top:10%;
   right: 5%;
   width: 300px;
+  z-index: 10;
 }
 
 .course_flexbox {

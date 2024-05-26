@@ -1,6 +1,5 @@
-import LoginBox from "@/components/login";
 import styles from "/styles/login.module.css";
-import SignUpBox from "@/components/signup";
+import SendData from "@/components/sendData";
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { NavBarProvider } from "@/pages/_app";
@@ -12,57 +11,57 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import GoogleLogin from "@/components/method";
-import SendData from "@/components/sendData";
-
 import { LoaderProvider, NotificationProvider } from "@/pages/_app";
 export default function Welcome() {
   const [isLogin, setIsLogin] = useContext(NavBarProvider);
   const navi = useRouter();
-  const [loginData, setLoginData] = useState({
+  const [registerData, setRegisterData] = useState({
     password: "",
     email: "",
+    username: "",
   });
+  const [response, setResponse] = useState({});
   const [loader, setLoader] = useContext(LoaderProvider);
   const [reply, setReply] = useContext(NotificationProvider);
-  const [response, setResponse] = useState("");
-
   const [showPass, setShowPass] = useState(false);
 
   const handlerPass = () => {
     setShowPass((prev) => !prev);
   };
 
-  const handler = async (event) => {
-    event.preventDefault();
-    const data = { email: loginData.email, password: loginData.password };
-    setLoader(true);
-    var res = await SendData("login", data);
-    setLoader(false);
-    if (res.message && res.data) {
-      setReply(res.message);
-      setResponse(res);
-    } else {
-      setReply(res.error);
-      setResponse(res);
-    }
-  };
-
   useEffect(() => {
     if (response) {
-      if (response.authType === 200) {
+      if (response.message && response.data) {
         console.log(response);
         localStorage.setItem("cyberLabs_Data", JSON.stringify(response.data));
         setIsLogin("account");
         navi.push("/account");
-      } else if (response.authType === 400) {
+      } else if (response.error) {
         console.log(response.error, "error");
       }
     }
   }, [response]);
 
+  const handler = async (event) => {
+    event.preventDefault();
+
+    setLoader(true);
+    var res = await SendData("/signup", registerData);
+    console.log(res);
+    setLoader(false);
+    if (res.authType == 200) {
+      setResponse(res);
+
+      setReply(res.message);
+    } else {
+      setResponse(res);
+      setReply(res.error);
+    }
+  };
+
   const handleInput = (event) => {
     const { name, value } = event.target;
-    setLoginData((prev) => ({ ...prev, [name]: value.trim() }));
+    setRegisterData((prev) => ({ ...prev, [name]: value.trim() }));
   };
 
   return (
@@ -75,7 +74,7 @@ export default function Welcome() {
         />
 
         <form className={styles.login__form} onSubmit={handler}>
-          <h1 className={styles.login__title}>Login</h1>
+          <h1 className={styles.login__title}>Sign Up</h1>
 
           <div className={styles.login__content}>
             <div className={styles.login__box}>
@@ -85,14 +84,33 @@ export default function Welcome() {
                 <input
                   type="email"
                   required
+                  onChange={handleInput}
                   className={styles.login__input}
-                  name="email"
                   id="login-email"
                   placeholder=" "
-                  onChange={handleInput}
+                  name="email"
                 />
                 <label htmlFor="login-email" className={styles.login__label}>
                   Email
+                </label>
+              </div>
+            </div>
+
+            <div className={styles.login__box}>
+              <FontAwesomeIcon className={styles.icons} icon={faUser} />
+
+              <div className={styles.login__box_input}>
+                <input
+                  type="text"
+                  required
+                  onChange={handleInput}
+                  className={styles.login__input}
+                  id="login-email"
+                  placeholder=" "
+                  name="username"
+                />
+                <label htmlFor="login-email" className={styles.login__label}>
+                  Your Name
                 </label>
               </div>
             </div>
@@ -103,12 +121,13 @@ export default function Welcome() {
                 <input
                   type={showPass ? "text" : "password"}
                   required
-                  name="password"
+                  onChange={handleInput}
                   className={styles.login__input}
                   id="login-pass"
                   placeholder=" "
-                  onChange={handleInput}
+                  name="password"
                 />
+
                 <label htmlFor="login-pass" className={styles.login__label}>
                   Password
                 </label>
@@ -121,30 +140,10 @@ export default function Welcome() {
             </div>
           </div>
 
-          <div className={styles.login__check}>
-            <div className={styles.login__check_group}>
-              <input
-                type="checkbox"
-                className={styles.login__check_input}
-                id="login-check"
-                value={true}
-                onChange={handleInput}
-              />
-              <label
-                htmlFor="login-check"
-                className={styles.login__check_label}
-              >
-                Remember me
-              </label>
-            </div>
-
-            <a href="#" className={styles.login__forgot}>
-              Forgot Password?
-            </a>
-          </div>
+          <div className={styles.login__check}></div>
 
           <button type="submit" className={styles.login__button}>
-            Login
+            Register
           </button>
 
           <button
@@ -157,10 +156,12 @@ export default function Welcome() {
             Continue With <span>Google</span>
           </button>
           <p className={styles.login__register}>
-            Don't have an account? <a href="/signup">Register</a>
+            have an account? <a href="/login">Login here</a>
           </p>
         </form>
       </div>
     </div>
   );
 }
+
+//<FontAwesomeIcon icon={faEye} />

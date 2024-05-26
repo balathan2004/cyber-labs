@@ -86,6 +86,12 @@
 .login__box_input {
   position: relative;
 }
+
+.login .password_container {
+  display: flex;
+  flex-direction: row;
+}
+
 .login__label {
   position: absolute;
   left: 0;
