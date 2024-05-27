@@ -12,37 +12,39 @@ export default function AdminVideo({ data }) {
   );
 
   return (
-    <div className={style.admin_video}>
-      <div className={style.video_content}>
-        <h1>{currentVideo[0].video_playlist}</h1>
+    <div className="pad_container">
+      <div className={style.admin_video}>
+        <div className={style.video_content}>
+          <h1>{currentVideo[0].video_playlist}</h1>
 
-        <video
-          src={currentVideo[0].video_link}
-          controls
-          poster={currentVideo[0].video_thumbnail}
-        ></video>
-        <h1>{currentVideo[0].video_caption}</h1>
+          <video
+            src={currentVideo[0].video_link}
+            controls
+            poster={currentVideo[0].video_thumbnail}
+          ></video>
+          <h1>{currentVideo[0].video_caption}</h1>
 
-        <button onClick={() => setIsEdit((prev) => !prev)}>
-          {isEdit ? "Change Thumbnail" : "Edit Video"}
-        </button>
+          <button onClick={() => setIsEdit((prev) => !prev)}>
+            {isEdit ? "Change Thumbnail" : "Edit Video"}
+          </button>
+        </div>
+
+        {isEdit ? (
+          <EditVideoDetails
+            currentPlaylist={course_id}
+            isEditable={true}
+            video_id={video_id}
+            existingData={currentVideo[0]}
+            backToPlaylist={setIsEdit}
+          />
+        ) : (
+          <EditVideoThumbnail
+            existingData={currentVideo[0]}
+            course_id={course_id}
+            video_id={video_id}
+          />
+        )}
       </div>
-
-      {isEdit ? (
-        <EditVideoDetails
-          currentPlaylist={course_id}
-          isEditable={true}
-          video_id={video_id}
-          existingData={currentVideo[0]}
-          backToPlaylist={setIsEdit}
-        />
-      ) : (
-        <EditVideoThumbnail
-          existingData={currentVideo[0]}
-          course_id={course_id}
-          video_id={video_id}
-        />
-      )}
     </div>
   );
 }

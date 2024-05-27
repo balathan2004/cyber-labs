@@ -24,7 +24,7 @@ export default function PlayListVideoCard({
           </div>
           <div className={style.content_details}>
             <div className={style.left}>
-              <img className={style.logo} src={"/logo1.jpg"}></img>
+              <img className={style.logo} src={"/images/logo.jpg"}></img>
             </div>
             <div className={style.right}>
               <h1>{video_data.video_title}</h1>

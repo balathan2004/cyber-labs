@@ -12,7 +12,7 @@ export default function Admin() {
   };
 
   return (
-    <div className="container">
+    <div className="pad_container">
       <main className={style.admin}>
         <header>
           <ul>

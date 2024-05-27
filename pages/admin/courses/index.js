@@ -48,7 +48,7 @@ export default function PlayList({ data }) {
   };
 
   return (
-    <div>
+    <div className="pad_container">
       <div className="course_flexbox">
         <div className="course_flexbox_link">
           <article className={style.playlist_card}>

@@ -4,7 +4,7 @@ export const NavBarProvider = React.createContext();
 export const LoaderProvider = React.createContext();
 export const UserCred = React.createContext();
 import Notification from "@/components/notification";
-
+import { useRouter } from "next/router";
 export const NotificationProvider = React.createContext();
 import GetRequest from "@/components/getRequest";
 import { getCookie } from "cookies-next";
@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }) {
   const [loader, setLoader] = useState(false);
   const [userData, setUserData] = useState(null);
   const [notify, setNotify] = useState(null);
+  const routePath = useRouter().asPath;
 
   const getCred = async () => {
     try {

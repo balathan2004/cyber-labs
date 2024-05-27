@@ -29,51 +29,53 @@ export default function Page({ data }) {
   };
 
   return (
-    <div className={style.video_page}>
-      <div>Playlist name:{playlist_info.playlist_name}</div>
-      <div>Playlist info:{playlist_info.content}</div>
-      <div className={style.selection}>
-        <button
-          className={!isCreate ? style.active_button : ""}
-          onClick={() => setIsCreate(false)}
-        >
-          PlayList
-        </button>
-        <button
-          className={isCreate ? style.active_button : ""}
-          onClick={() => setIsCreate(true)}
-        >
-          Create video
-        </button>
-        <button
-          onClick={() => {
-            deletePlaylist(course_id);
-          }}
-        >
-          Delete
-        </button>
-      </div>
-      {isCreate ? (
-        <CreateComponent
-          currentPlaylist={course_id}
-          backToPlaylist={setIsCreate}
-        />
-      ) : (
-        <div className="course_flexbox">
-          {playlistVideos.length > 0 ? (
-            playlistVideos.map((x) => (
-              <PlayListVideoCard
-                video_data={x}
-                key={x}
-                course_id={course_id}
-                isAdmin={true}
-              />
-            ))
-          ) : (
-            <h1>No video Found</h1>
-          )}
+    <div className="pad_container">
+      <div className={style.video_page}>
+        <div>Playlist name:{playlist_info.playlist_name}</div>
+        <div>Playlist info:{playlist_info.content}</div>
+        <div className={style.selection}>
+          <button
+            className={!isCreate ? style.active_button : ""}
+            onClick={() => setIsCreate(false)}
+          >
+            PlayList
+          </button>
+          <button
+            className={isCreate ? style.active_button : ""}
+            onClick={() => setIsCreate(true)}
+          >
+            Create video
+          </button>
+          <button
+            onClick={() => {
+              deletePlaylist(course_id);
+            }}
+          >
+            Delete
+          </button>
         </div>
-      )}
+        {isCreate ? (
+          <CreateComponent
+            currentPlaylist={course_id}
+            backToPlaylist={setIsCreate}
+          />
+        ) : (
+          <div className="course_flexbox">
+            {playlistVideos.length > 0 ? (
+              playlistVideos.map((x, index) => (
+                <PlayListVideoCard
+                  video_data={x}
+                  key={x + index}
+                  course_id={course_id}
+                  isAdmin={true}
+                />
+              ))
+            ) : (
+              <h1>No video Found</h1>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

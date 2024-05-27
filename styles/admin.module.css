@@ -2,17 +2,14 @@
 ADMin login page
 */
 
-
-.login_container{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    align-items:center;
-    width: 100%;
-    min-height: 100vh;
+.login_container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
 }
-
-
 
 .loginform {
   background: #ffffff;
@@ -39,7 +36,6 @@ ADMin login page
   font-weight: normal;
   text-align: center;
 }
-
 
 .loginform input {
   width: 100%;
@@ -106,8 +102,6 @@ ADMin
 .admin header {
   width: 70%;
   margin: auto;
-
-  margin-top: 2rem;
 }
 
 .admin header ul {

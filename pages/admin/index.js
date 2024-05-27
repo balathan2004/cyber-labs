@@ -28,40 +28,31 @@ export default function test() {
     }
   };
 
-  const checkAdmin = () => {
-    const adminAuth = getCookie("cyberLabs_Admin");
-    if (adminAuth) {
-      navi.push("/admin/dashboard");
-    }
-  };
-
-  useEffect(() => {
-    checkAdmin();
-  }, []);
-
   return (
-    <div className={style.login_container}>
-      <div className={style.loginform}>
-        <h2>Login</h2>
-        <h3>{message}</h3>
+    <div className="pad_container">
+      <div className={style.login_container}>
+        <div className={style.loginform}>
+          <h2>Login</h2>
+          <h3>{message}</h3>
 
-        <form onSubmit={formHandler}>
-          <p>Username</p>
-          <input
-            type="text"
-            onChange={handleInput}
-            required
-            name="admin_username"
-          />
-          <p>Password</p>
-          <input
-            type="text"
-            onChange={handleInput}
-            required
-            name="admin_password"
-          />
-          <input type="submit" name="login-btn" value="Login" />
-        </form>
+          <form onSubmit={formHandler}>
+            <p>Username</p>
+            <input
+              type="text"
+              onChange={handleInput}
+              required
+              name="admin_username"
+            />
+            <p>Password</p>
+            <input
+              type="text"
+              onChange={handleInput}
+              required
+              name="admin_password"
+            />
+            <input type="submit" name="login-btn" value="Login" />
+          </form>
+        </div>
       </div>
     </div>
   );
