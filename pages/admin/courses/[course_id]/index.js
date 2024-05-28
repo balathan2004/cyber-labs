@@ -31,9 +31,11 @@ export default function Page({ data }) {
   return (
     <div className="pad_container">
       <div className={style.video_page}>
-        <div>Playlist name:{playlist_info.playlist_name}</div>
-        <div>Playlist info:{playlist_info.content}</div>
-        <div className={style.selection}>
+        <div className={style.playlist_details}>
+          <div>Playlist name : {playlist_info.playlist_name}</div>
+          <div>Playlist info : {playlist_info.content}</div>
+          <div className={style.selection}></div>
+
           <button
             className={!isCreate ? style.active_button : ""}
             onClick={() => setIsCreate(false)}

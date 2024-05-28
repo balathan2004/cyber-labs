@@ -51,9 +51,12 @@ export default function PlayList({ data }) {
     <div className="pad_container">
       <div className="course_flexbox">
         <div className="course_flexbox_link">
-          <article className={style.playlist_card}>
-            <button onClick={() => setIsClicked((prev) => !prev)}>
-              New PlayList
+          <article className={style.empty_box}>
+            <button
+              className={style.empty_button}
+              onClick={() => setIsClicked((prev) => !prev)}
+            >
+              Create New PlayList
             </button>
           </article>
         </div>

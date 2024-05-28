@@ -24,7 +24,10 @@ export default function AdminVideo({ data }) {
           ></video>
           <h1>{currentVideo[0].video_caption}</h1>
 
-          <button onClick={() => setIsEdit((prev) => !prev)}>
+          <button
+            className={style.toggle_button}
+            onClick={() => setIsEdit((prev) => !prev)}
+          >
             {isEdit ? "Change Thumbnail" : "Edit Video"}
           </button>
         </div>

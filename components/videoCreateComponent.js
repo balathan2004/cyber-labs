@@ -3,7 +3,6 @@ import style from "/styles/admin.module.css";
 import { v4 } from "uuid";
 import { NotificationProvider } from "@/pages/_app";
 import SendData from "@/components/sendData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function CreateComponent({ currentPlaylist, backToPlaylist }) {
   const [image, setImage] = useState({ file: [] });
   const [showImage, setShowImage] = useState([]);

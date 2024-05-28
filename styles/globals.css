@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   background-color: lightgray;
+  position: relative;
 }
 
 .pad_container {
@@ -70,8 +71,12 @@
 
 .course_flexbox_link {
   width: 30%;
-  height: 375px;
+  height: 300px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 @media only screen and (max-width: 1000px) {

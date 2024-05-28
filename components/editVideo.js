@@ -61,12 +61,15 @@ export function EditVideoDetails({
   };
 
   const deleteVideo = async () => {
-    var data = { course_id: currentPlaylist, video_id: video_id };
-    const response = await SendData("/admin/delete_video", data);
-    if (response.message) {
-      setNotify(response.message);
-    } else {
-      setNotify(response.error);
+    var confirmation = confirm("do you want to delete this video");
+    if (confirmation) {
+      var data = { course_id: currentPlaylist, video_id: video_id };
+      const response = await SendData("/admin/delete_video", data);
+      if (response.message) {
+        setNotify(response.message);
+      } else {
+        setNotify(response.error);
+      }
     }
   };
 
@@ -101,11 +104,15 @@ export function EditVideoDetails({
               value={video_details.video_link ? video_details.video_link : ""}
             ></textarea>
 
-            <button>Post</button>
+            <button>Make Changes</button>
           </div>
         </div>
       </form>
-      {isEditable ? <button onClick={deleteVideo}>Delete</button> : null}
+      {isEditable ? (
+        <button className={style.delete_button} onClick={deleteVideo}>
+          Delete
+        </button>
+      ) : null}
     </div>
   );
 }
@@ -157,7 +164,7 @@ export function EditVideoThumbnail({ existingData, course_id, video_id }) {
             ></input>
           </div>
 
-          <button>Post</button>
+          <button className={style.blue_button}>Post</button>
         </div>
       </form>
     </div>
