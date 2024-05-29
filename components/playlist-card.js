@@ -11,7 +11,7 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
     <a href={url} className="course_flexbox_link">
       <article className={style.playlist_card}>
         <div className={style.content}>
-          <div>
+          <div className={style.thumbnail}>
             <img
               src={playlist_data.data.playlist_thumbnail}
               alt={playlist_data.data.playlist_thumbnail}

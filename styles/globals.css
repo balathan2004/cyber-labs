@@ -67,6 +67,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
+  margin: 1rem;
 }
 
 .course_flexbox_link {
@@ -101,7 +102,7 @@
 
   .course_flexbox_link {
     height: fit-content;
-    width: 90%;
+    width: 100%;
   }
 }
 

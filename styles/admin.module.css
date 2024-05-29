@@ -274,12 +274,14 @@ ADMin
 /* admin card */
 
 .playlist_card , .empty_box{
+
   margin: 10px;
   display: block;
+  position: relative;
 }
 
 .playlist_card .content {
-  gap: 10px;
+  min-width: 100%;
   text-transform: capitalize;
   color: black;
 }
@@ -310,6 +312,13 @@ ADMin
   font-size: 16px;
 }
 
+.playlist_card .thumbnail img{
+  width: 300px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .playlist_card .content_details img {
   height: 50px;
   display: block;
@@ -317,12 +326,7 @@ ADMin
   border-radius: 50%;
 }
 
-.playlist_card img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  border-radius: 10px;
-}
+
 
 .container .video_list {
   background: #fff;
@@ -413,6 +417,17 @@ ADMin
   
   width: 90%;
 }
+
+
+.playlist_card{
+  width: 100%;
+}
+
+.playlist_card .thumbnail img{
+  width: 100%;
+}
+
+
 
 
 }
