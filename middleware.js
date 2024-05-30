@@ -7,9 +7,9 @@ export default function middleware(request) {
     : false;
 
   const { pathname } = nextUrl;
+  console.log(process.env.ADMIN_NAME);
 
   if (pathname.startsWith("/admin")) {
-    console.log(pathname, cyberLabs_Admin, process.env.ADMIN_NAME);
     if (cyberLabs_Admin == process.env.ADMIN_NAME && pathname == "/admin") {
       return NextResponse.redirect(new URL("/admin/dashboard", request.url));
     } else if (
