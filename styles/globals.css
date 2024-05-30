@@ -66,12 +66,12 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
-  margin: 1rem;
+  gap: 1rem;
+
 }
 
 .course_flexbox_link {
-  width: 30%;
+  width: 32%;
   height: 300px;
   text-decoration: none;
   display: flex;
@@ -102,13 +102,9 @@
 
   .course_flexbox_link {
     height: fit-content;
-    width: 100%;
+    width: 90%;
   }
 }
 
 
 
-.ri--user-3-line {
-  display: inline-block;
-  color: white;
-}

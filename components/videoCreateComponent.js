@@ -89,7 +89,9 @@ export default function CreateComponent({ currentPlaylist, backToPlaylist }) {
               onChange={handleImage}
               required
             ></input>
-            <label htmlFor="file">Select Image</label>
+            <label htmlFor="file" className={style.select_label}>
+              Select Image
+            </label>
             <img src={showImage ? showImage : ""}></img>
           </div>
           <div className={style.video_text}>

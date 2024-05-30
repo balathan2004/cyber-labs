@@ -16,7 +16,7 @@ export default function PlayListVideoCard({
     <a href={url} className="course_flexbox_link">
       <article className={style.playlist_card}>
         <div className={style.content}>
-          <div>
+          <div className={style.thumbnail}>
             <img
               src={video_data.video_thumbnail}
               alt={video_data.video_thumbnail}
