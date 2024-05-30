@@ -14,18 +14,12 @@ export default function NavBar() {
 
   const NavRoutes = [
     { title: "Home", route: "/" },
-    {
-      title: "about",
-      route: "/about",
-    },
+    ,
     {
       title: "courses",
       route: "/courses",
     },
-    {
-      title: "blog",
-      route: "/blog",
-    },
+    ,
     {
       title: "contact",
       route: "/contact",
