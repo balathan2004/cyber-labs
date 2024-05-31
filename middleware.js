@@ -7,8 +7,8 @@ export default function middleware(request) {
     : false;
 
   const { pathname } = nextUrl;
-  console.log("admin env", process.env.ADMIN_NAME);
-  console.log("admin user", cyberLabs_Admin);
+  console.log("admin env=", process.env.ADMIN_NAME);
+  console.log("admin user=", cyberLabs_Admin);
 
   if (pathname.startsWith("/admin")) {
     if (cyberLabs_Admin == process.env.ADMIN_NAME && pathname == "/admin") {
