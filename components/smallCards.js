@@ -104,8 +104,6 @@ export function CommentList({ commentData, userData, setNotify }) {
           setNotify={setNotify}
           updateChildComments={setCommentChild}
           removeShowBox={setShowReplyBox} //hide after comment
-          course_id={course_id}
-          video_id={video_id}
         />
       ) : null}
     </div>
@@ -137,13 +135,13 @@ export function ReplyComment({
 
     if (commentText.trim()) {
       const time = new Date();
-      const modifiedTime = moment(time).format("DD-MM-YYYY hh:mm-A");
+      const modifiedTime = TimeSetter(time);
 
       const replyCommentData = {
         comment: commentText,
         comment_id: comment_id,
         comment_user: userData ? userData.username : "anonymous",
-        time: modifiedTime,
+        time: moment(time).format("DD-MM-YYYY hh:mm-A"),
         comment_reply: comment_user,
         course_id: course_id,
         video_id: video_id,
