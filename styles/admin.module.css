@@ -198,9 +198,11 @@ ADMin
 
 /* create video */
 
-.content {
+.content   {
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .content .video_details {
@@ -249,6 +251,13 @@ ADMin
   border: 1px solid #000;
   cursor: pointer;
 }
+
+
+.content .hidden_input {
+position: absolute;
+z-index: -10;
+
+  }
 
 .delete_button {
   background-color: rgb(222, 80, 80);
@@ -431,6 +440,7 @@ ADMin
     height: 100%;
     width: 90%;
     position: relative;
+    margin: auto;
   }
 
   .content .video_text textarea {
@@ -439,6 +449,9 @@ ADMin
   .content .video_details {
     width: 100%;
   }
+
+
+
 
   .create_playlist {
     left: 5%;
