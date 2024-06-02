@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GetData from "./getData";
 import PlayList_Card from "./playlist-card";
+import UserCard from "./users";
 
 export function UsersAdminComponent() {
   const [data, setData] = useState([]);
@@ -17,8 +18,8 @@ export function UsersAdminComponent() {
 
   return (
     <div>
-      {data.map((ele) => {
-        return <li>{ele.uid}</li>;
+      {data.map((ele, index) => {
+        return <UserCard userdata={ele} key={index} />;
       })}
     </div>
   );

@@ -1,6 +1,4 @@
 import style from "/styles/admin.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 
 export default function PlayList_Card({ playlist_data, isAdmin = true }) {
   const url = isAdmin

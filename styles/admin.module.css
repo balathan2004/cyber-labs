@@ -237,7 +237,10 @@ ADMin
   padding: 10px;
   background-color: rgb(215, 215, 215);
 }
-.content .video_text button , .delete_button , .toggle_button , .blue_button {
+.content .video_text button,
+.delete_button,
+.toggle_button,
+.blue_button {
   width: 100%;
   margin-top: 1rem;
   height: 40px;
@@ -247,14 +250,12 @@ ADMin
   cursor: pointer;
 }
 
-
-.delete_button{
+.delete_button {
   background-color: rgb(222, 80, 80);
- width: 50%; 
- 
-} 
+  width: 50%;
+}
 
-.empty_button{
+.empty_button {
   width: 100%;
   padding: 1rem;
   background-color: skyblue;
@@ -263,18 +264,15 @@ ADMin
   cursor: pointer;
 }
 
-
-.toggle_button{
+.toggle_button {
   width: 30%;
   background-color: #5beb90;
 }
 
-
-
 /* admin card */
 
-.playlist_card , .empty_box{
-
+.playlist_card,
+.empty_box {
   margin: 10px;
   display: block;
   position: relative;
@@ -312,7 +310,7 @@ ADMin
   font-size: 16px;
 }
 
-.playlist_card .thumbnail img{
+.playlist_card .thumbnail img {
   width: 350px;
   aspect-ratio: 16/9;
   object-fit: cover;
@@ -326,8 +324,6 @@ ADMin
   border-radius: 50%;
 }
 
-
-
 .container .video_list {
   background: #fff;
   border-radius: 5px;
@@ -337,15 +333,38 @@ ADMin
 }
 
 /*
+  admin user card 
+  */
+
+.user_card {
+  display: flex;
+
+  gap: 1rem;
+  margin: 1rem 2rem;
+}
+
+.user_card img {
+  border-radius: 50%;
+  width: 55px;
+}
+
+.user_card h3 {
+  font-weight: 500;
+}
+
+.user_card h4 {
+  font-weight: 400;
+}
+
+/*
   admin video 
   */
 
-  .video_page{
-    width: 90%;
-    margin: auto;
-    margin-bottom: 1rem;
-  }
-
+.video_page {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
 
 .admin_video {
   min-height: 100vh;
@@ -356,22 +375,20 @@ ADMin
   padding-bottom: 1rem;
 }
 
-
- .video_content , .admin .content{
+.video_content,
+.admin .content {
   width: 35%;
 }
-
-
 
 .admin_video video {
   width: 100%;
 }
 
-.video_page .thumbnail{
+.video_page .thumbnail {
   position: relative;
 }
 
-.video_page .thumbnail .select_label{
+.video_page .thumbnail .select_label {
   position: absolute;
   top: 50%;
   left: 30%;
@@ -383,7 +400,7 @@ ADMin
   admin  video  page
   */
 
-.video_page button   {
+.video_page button {
   height: 35px;
   width: 150px;
   margin: 1rem 1rem 0 0;
@@ -391,63 +408,50 @@ ADMin
   border: 1px solid rgb(95, 91, 91);
 }
 
-.video_page .active_button   {
+.video_page .active_button {
   background-color: skyblue;
 }
 
-
-.video_page .playlist_details{
+.video_page .playlist_details {
   margin: 1rem;
   text-transform: capitalize;
 }
 
-
-
-
 @media only screen and (max-width: 800px) {
-
-  .admin_video{
+  .admin_video {
     flex-direction: column;
     align-items: center;
-  
   }
 
-  
-.admin_video .video_content {
-  width: 90%;
-}
+  .admin_video .video_content {
+    width: 90%;
+  }
 
-.content {
-  height: 100%;
-  width: 90%;
-  position: relative;
-}
+  .content {
+    height: 100%;
+    width: 90%;
+    position: relative;
+  }
 
-.content .video_text textarea {
-  width: 100%;
-}
-.content .video_details{
-  width: 100%;
-}
+  .content .video_text textarea {
+    width: 100%;
+  }
+  .content .video_details {
+    width: 100%;
+  }
 
+  .create_playlist {
+    left: 5%;
+    top: 5%;
 
-.create_playlist{
-  left: 5%;
-  top: 5%;
-  
-  width: 90%;
-}
+    width: 90%;
+  }
 
+  .playlist_card {
+    width: 100%;
+  }
 
-.playlist_card{
-  width: 100%;
-}
-
-.playlist_card .thumbnail img{
-  width: 100%;
-}
-
-
-
-
+  .playlist_card .thumbnail img {
+    width: 100%;
+  }
 }

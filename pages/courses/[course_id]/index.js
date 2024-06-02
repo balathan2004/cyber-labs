@@ -12,7 +12,7 @@ export default function Page({ data }) {
   console.log(currentPlaylist);
   return (
     <div className="pad_container">
-      <h1 className="title">{playlist_info.playlist_name}</h1>
+      <h1 className="title">{playlist_info.playlist_name} - Videos</h1>
       <div className="course_flexbox">
         {videos.map((x) => (
           <PlayListVideoCard
