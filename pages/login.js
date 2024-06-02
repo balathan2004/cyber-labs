@@ -138,7 +138,7 @@ export default function Welcome() {
               </label>
             </div>
 
-            <a href="#" className={styles.login__forgot}>
+            <a href="/auth/reset-password" className={styles.login__forgot}>
               Forgot Password?
             </a>
           </div>
