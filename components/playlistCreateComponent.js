@@ -33,7 +33,6 @@ export default function PlaylistCreateComponent({
     <form onSubmit={submitForm} className={style.create_playlist}>
       <FontAwesomeIcon icon={faCircleXmark} onClick={closeNotice} />
       <div className={style.thumbnail}>
-        <label htmlFor="file">Select Image</label>
         <img src={showImage} height={"300px"}></img>
 
         <input type="file" id="file" onChange={handleImage} required></input>

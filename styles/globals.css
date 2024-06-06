@@ -67,18 +67,20 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+
+  margin-left: 1rem;
 
 }
 
 .course_flexbox_link {
-  width: 32%;
+  width: 30%;
   height: 300px;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  margin: 1rem;
 }
 
 @media only screen and (max-width: 1000px) {

@@ -74,7 +74,7 @@ export function EditVideoDetails({
   };
 
   return (
-    <div className={style.content}>
+    <div className={style.edit_content}>
       <form onSubmit={submitForm}>
         <h1>Edit Video Details</h1>
 
@@ -147,7 +147,7 @@ export function EditVideoThumbnail({ existingData, course_id, video_id }) {
   };
 
   return (
-    <div className={style.content}>
+    <div className={style.edit_content}>
       <form onSubmit={submitImageForm}>
         <h1>Choose ThumbNail (Single)</h1>
 

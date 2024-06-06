@@ -154,9 +154,7 @@ ADMin
   position: relative;
 }
 
-.create_playlist .thumbnail input {
-  display: none;
-}
+
 
 .create_playlist .thumbnail img {
   display: block;
@@ -164,14 +162,7 @@ ADMin
   aspect-ratio: 16/9;
 }
 
-.create_playlist .thumbnail label {
-  position: absolute;
-  top: 50%;
-  left: 40%;
-  padding: 10px;
-  background-color: lightgray;
-  border-radius: 10px;
-}
+
 
 .create_playlist input[type="text"],
 .create_playlist textarea,
@@ -201,8 +192,7 @@ ADMin
 .content   {
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
+  
 }
 
 .content .video_details {
@@ -229,16 +219,7 @@ ADMin
   padding-left: 0.3rem;
 }
 
-.content label {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  right: 70%;
-  border-radius: 10px;
-  border: 1px solid black;
-  padding: 10px;
-  background-color: rgb(215, 215, 215);
-}
+
 .content .video_text button,
 .delete_button,
 .toggle_button,
@@ -320,7 +301,7 @@ z-index: -10;
 }
 
 .playlist_card .thumbnail img {
-  width: 350px;
+  width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 10px;
@@ -365,29 +346,68 @@ z-index: -10;
   font-weight: 400;
 }
 
-/*
+/* 
   admin video 
   */
 
 .video_page {
-  width: 90%;
+  width: 95%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   margin-bottom: 1rem;
 }
 
 .admin_video {
-  min-height: 100vh;
+  
   width: 100%;
   display: flex;
   gap: 2rem;
   justify-content: space-around;
   padding-bottom: 1rem;
+  margin: 1rem;
 }
 
 .video_content,
-.admin .content {
+.admin_video .edit_content {
   width: 35%;
+  position: relative;
 }
+
+.admin_video .edit_content form{
+
+}
+
+
+
+.edit_content .video_details {
+
+  height: 100%;
+}
+
+.edit_content .video_details img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
+}
+
+.edit_content .video_details .thumbnail {
+  position: relative;
+}
+
+.edit_content .video_text textarea {
+  resize: none;
+  width: 100%;
+  height: 60px;
+  display: block;
+  margin-top: 0.5rem;
+  padding-left: 0.3rem;
+}
+
+
+
+
 
 .admin_video video {
   width: 100%;
@@ -397,13 +417,7 @@ z-index: -10;
   position: relative;
 }
 
-.video_page .thumbnail .select_label {
-  position: absolute;
-  top: 50%;
-  left: 30%;
-  text-align: center;
-  width: 150px;
-}
+
 
 /*
   admin  video  page
@@ -422,7 +436,8 @@ z-index: -10;
 }
 
 .video_page .playlist_details {
-  margin: 1rem;
+text-align: center;
+
   text-transform: capitalize;
 }
 
@@ -430,6 +445,7 @@ z-index: -10;
   .admin_video {
     flex-direction: column;
     align-items: center;
+
   }
 
   .admin_video .video_content {
@@ -448,6 +464,10 @@ z-index: -10;
   }
   .content .video_details {
     width: 100%;
+  }
+
+  .video_page{
+    width: 95%;
   }
 
 
