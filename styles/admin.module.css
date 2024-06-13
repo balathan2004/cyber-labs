@@ -366,7 +366,7 @@ z-index: -10;
   gap: 2rem;
   justify-content: space-around;
   padding-bottom: 1rem;
-  margin: 1rem;
+  margin: 1rem 0rem;
 }
 
 .video_content,
@@ -378,6 +378,8 @@ z-index: -10;
 .admin_video .edit_content form{
 
 }
+
+
 
 
 
@@ -431,6 +433,17 @@ z-index: -10;
   border: 1px solid rgb(95, 91, 91);
 }
 
+.video_page form {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.video_page form h1{
+  font-size: 25px;
+}
+
+
 .video_page .active_button {
   background-color: skyblue;
 }
@@ -470,6 +483,13 @@ text-align: center;
     width: 95%;
   }
 
+  .video_page form{
+    display: block;
+  }
+
+  .admin_video .edit_content{
+    width: 90%;
+  }
 
 
 

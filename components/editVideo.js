@@ -104,7 +104,7 @@ export function EditVideoDetails({
               value={video_details.video_link ? video_details.video_link : ""}
             ></textarea>
 
-            <button>Make Changes</button>
+            <button className={style.blue_button}>Make Changes</button>
           </div>
         </div>
       </form>

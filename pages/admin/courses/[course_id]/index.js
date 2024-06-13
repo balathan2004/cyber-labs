@@ -34,7 +34,6 @@ export default function Page({ data }) {
         <div className={style.playlist_details}>
           <div>Playlist name : {playlist_info.playlist_name}</div>
           <div>Playlist info : {playlist_info.content}</div>
-          <div className={style.selection}></div>
 
           <button
             className={!isCreate ? style.active_button : ""}

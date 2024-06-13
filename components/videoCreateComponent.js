@@ -69,9 +69,9 @@ export default function CreateComponent({ currentPlaylist, backToPlaylist }) {
   return (
     <div className={style.content}>
       <form onSubmit={submitForm}>
-        <h1>Choose ThumbNail (Single)</h1>
-
         <div className={style.video_details}>
+          <h1>Choose ThumbNail (Single)</h1>
+
           <div className={style.thumbnail}>
             <input
               type="file"
