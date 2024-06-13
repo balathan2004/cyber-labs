@@ -20,6 +20,7 @@ export default function PlayListVideoCard({
             <img
               src={video_data.video_thumbnail}
               alt={video_data.video_thumbnail}
+              loading="lazy"
             ></img>
           </div>
           <div className={style.content_details}>

@@ -13,6 +13,7 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
             <img
               src={playlist_data.data.playlist_thumbnail}
               alt={playlist_data.data.playlist_thumbnail}
+              loading="lazy"
             ></img>
           </div>
           <div className={style.content_details}>

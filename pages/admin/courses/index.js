@@ -3,7 +3,8 @@ import style from "/styles/admin.module.css";
 import PlaylistCreateComponent from "@/components/playlistCreateComponent";
 import PlayList_Card from "@/components/playlist-card";
 import SendData from "@/components/sendData";
-import { NotificationProvider } from "@/pages/_app";
+import { NotificationProvider, LoaderProvider } from "@/pages/_app";
+
 export default function PlayList({ data }) {
   const [playlist, setPlaylist] = useState(data);
   const [isClicked, setIsClicked] = useState(false);
@@ -14,7 +15,7 @@ export default function PlayList({ data }) {
   const [image, setImage] = useState({ file: [] });
 
   const [notify, setNotify] = useContext(NotificationProvider);
-
+  const [loader, setLoader] = useContext(LoaderProvider);
   const submitForm = async function (event) {
     event.preventDefault();
     const trimmedData = Object.fromEntries(
@@ -29,6 +30,7 @@ export default function PlayList({ data }) {
     data.append("file", image);
 
     try {
+      setLoader(true);
       const response = await SendData(
         "/admin/create-playlist",
         data,
@@ -41,9 +43,11 @@ export default function PlayList({ data }) {
         setNewPlaylistInfo(null);
         setNotify(response.message);
         setPlaylist(response.playlistName);
+        setLoader(false);
       }
     } catch (e) {
       console.log(e);
+      setLoader(false);
     }
   };
 

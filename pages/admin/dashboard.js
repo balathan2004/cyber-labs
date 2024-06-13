@@ -30,6 +30,9 @@ export default function Admin() {
             >
               Users
             </li>
+            <li>
+              <a href="/admin/courses">Courses</a>
+            </li>
           </ul>
         </header>
         <article>

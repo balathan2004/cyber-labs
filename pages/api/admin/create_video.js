@@ -54,7 +54,7 @@ const post = async (req, res) => {
       }
     });
 
-    res.json({ message: "video added" });
+    res.json({ message: "Video Added \n Please Refresh The page" });
   } catch (err) {
     console.log(err);
     res.json({ message: "video not added" });

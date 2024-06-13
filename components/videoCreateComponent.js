@@ -66,16 +66,6 @@ export default function CreateComponent({ currentPlaylist, backToPlaylist }) {
     }
   };
 
-  const deleteVideo = async () => {
-    var data = { course_id: currentPlaylist, video_id: video_id };
-    const response = await SendData("/admin/delete_video", data);
-    if (response.message) {
-      setNotify(response.message);
-    } else {
-      setNotify(response.error);
-    }
-  };
-
   return (
     <div className={style.content}>
       <form onSubmit={submitForm}>
