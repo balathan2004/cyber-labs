@@ -7,17 +7,19 @@ export default function Courses({ data }) {
       <h1 className="title">Courses</h1>
 
       <div className="course_flexbox">
-        {data
-          ? data.map((item) => {
-              return (
-                <PlayList_Card
-                  playlist_data={item}
-                  key={item.id}
-                  isAdmin={false}
-                />
-              );
-            })
-          : null}
+        {data.length > 0 ? (
+          data.map((item) => {
+            return (
+              <PlayList_Card
+                playlist_data={item}
+                key={item.id}
+                isAdmin={false}
+              />
+            );
+          })
+        ) : (
+          <h1>Nothing Found</h1>
+        )}
       </div>
     </div>
   );

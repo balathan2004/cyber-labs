@@ -2,7 +2,7 @@ import { IncomingForm } from "formidable";
 import uploadImage from "@/components/uploadImage";
 const fs = require("fs");
 import { firestore } from "@/config";
-import moment from "moment";
+import { saveFile } from "@/components/server-components";
 
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 
@@ -60,8 +60,3 @@ const post = async (req, res) => {
     res.json({ message: "video not added" });
   }
 };
-
-async function saveFile(file) {
-  const FileData = fs.readFileSync(file.filepath);
-  return FileData;
-}

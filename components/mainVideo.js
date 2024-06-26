@@ -44,7 +44,7 @@ export default function MainVideo({
     var commentValue = event.target.value;
     setHeight("auto"); // Reset height to auto to recalculate the height based on content
     setHeight(event.target.scrollHeight + "px");
-    console.log(event.target.scrollHeight);
+
     setComment(commentValue);
   };
 
