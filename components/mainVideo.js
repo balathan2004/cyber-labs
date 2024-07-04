@@ -1,5 +1,5 @@
 import style from "/styles/playlist.module.css";
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { SmallCard, CommentList } from "./smallCards";
 import SendData from "./sendData";
 import { v4 } from "uuid";
@@ -23,7 +23,8 @@ export default function MainVideo({
   const playListName = videoData.playlist_info.playlist_name;
   const [comment, setComment] = useState([]);
   const userData = useContext(UserCred);
-  const commentArea = useRef();
+  const commentArea = useRef(null);
+  const videoArea = useRef(null);
   const [notify, setNotify] = useContext(NotificationProvider);
   const [height, setHeight] = useState("auto");
   const [showCommentBox, setShowCommentBox] = useState(false);
@@ -72,6 +73,7 @@ export default function MainVideo({
       <div className={style.main_video}>
         <div className={style.video}>
           <video
+            ref={videoArea}
             src={mainVideoData.video_link}
             controls
             poster={mainVideoData.video_thumbnail}

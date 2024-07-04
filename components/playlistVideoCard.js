@@ -1,6 +1,7 @@
 import style from "/styles/admin.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function PlayListVideoCard({
   video_data,
@@ -17,11 +18,11 @@ export default function PlayListVideoCard({
       <article className={style.playlist_card}>
         <div className={style.content}>
           <div className={style.thumbnail}>
-            <img
+            <LazyLoadImage
               src={video_data.video_thumbnail}
               alt={video_data.video_thumbnail}
               loading="lazy"
-            ></img>
+            ></LazyLoadImage>
           </div>
           <div className={style.content_details}>
             <div className={style.left}>

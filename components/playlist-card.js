@@ -1,4 +1,5 @@
 import style from "/styles/admin.module.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function PlayList_Card({ playlist_data, isAdmin = true }) {
   const url = isAdmin
@@ -10,11 +11,11 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
       <article className={style.playlist_card}>
         <div className={style.content}>
           <div className={style.thumbnail}>
-            <img
+            <LazyLoadImage
               src={playlist_data.data.playlist_thumbnail}
               alt={playlist_data.data.playlist_thumbnail}
               loading="lazy"
-            ></img>
+            ></LazyLoadImage>
           </div>
           <div className={style.content_details}>
             <div className={style.left}>
