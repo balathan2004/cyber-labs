@@ -62,11 +62,13 @@
   min-height: 40px;
   font-size: 18px;
   border-bottom: 1px solid black;
+  margin-top: 1rem;
 }
 
 .container .main_video .comment .commentBox textarea:focus {
   border: none;
   border-bottom: 1px solid blue;
+
 }
 
 .container .main_video .comment .commentBox button {
@@ -195,21 +197,19 @@
 .boxes img {
   width: 50%;
   aspect-ratio: 4/2.5;
-  border-radius:30px;
+  border-radius: 30px;
   padding: 20px;
-  
 }
 
 .boxes .box {
   display: flex;
   height: auto;
-overflow: hidden;
+  overflow: hidden;
 }
 
 .boxes .selected_box {
   display: flex;
   background-color: rgb(255, 255, 255);
-  
 }
 
 .boxes p {
@@ -239,6 +239,7 @@ overflow: hidden;
   .white_box {
     height: auto;
     width: 90%;
+    padding: 1rem 0;
   }
 
   .white_box .line1 {
@@ -255,13 +256,17 @@ overflow: hidden;
     margin-left: 0;
     text-align: center;
   }
+
+  .boxes img {
+    border-radius: 10%;
+  }
 }
 
 @media (max-width: 1000px) {
   .container {
     flex-direction: column;
     align-items: center;
-    height:max-content;
+    height: max-content;
   }
 
   .container .main_video .comment .comment_list {
@@ -273,29 +278,37 @@ overflow: hidden;
     cursor: pointer;
   }
 
-  .container .main_video,
+  .container .main_video ,
   .container .white_box {
+    font-size: .8rem;
     width: 95%;
     max-width: none;
     min-width: none;
+  
   }
+
+  .container .main_video .comment .commentBox textarea , .container .main_video .comment .commentBox button{
+
+    font-size: 0.8rem;
+  }
+
+
+
+
 }
 
 @media only screen and (max-width: 608px) {
-
   .container .white_box {
     min-width: 95%;
     height: fit-content;
- 
   }
 
   .white_box .line1 {
-    font-size: 1em;
+    font-size: 0.8rem;
   }
 
-
   .boxes p {
-    font-size: 1em;
+    font-size: 0.8rem;
   }
 
   .boxes .box1_text span {

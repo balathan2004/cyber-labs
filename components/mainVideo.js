@@ -85,7 +85,6 @@ export default function MainVideo({
         </div>
         <div className={style.comment}>
           <form className={style.commentBox} onSubmit={sendComment}>
-            <span>Leave a Comment</span>
             <textarea
               onChange={commentFetching}
               required
@@ -146,3 +145,5 @@ export default function MainVideo({
     </div>
   );
 }
+
+// line 88       /* <span>Leave a Comment</span> */
