@@ -6,16 +6,19 @@ import style from "/styles/admin.module.css";
 export default function AdminVideo({ data }) {
   const router = useRouter();
   const { course_id, video_id } = router.query;
+  const { playlist_info } = data;
+
   const [isEdit, setIsEdit] = useState(true);
   const [currentVideo, setCurrentVideo] = useState(
     data.videos.filter((ele) => ele.video_id == video_id)
   );
+  console.log(currentVideo[0]);
 
   return (
     <div className="pad_container">
       <div className={style.admin_video}>
         <div className={style.video_content}>
-          <h1>{currentVideo[0].video_playlist}</h1>
+          <h1>{playlist_info.playlist_name}</h1>
 
           <video
             src={currentVideo[0].video_link}

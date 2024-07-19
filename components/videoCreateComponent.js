@@ -5,7 +5,7 @@ import { NotificationProvider } from "@/pages/_app";
 import SendData from "@/components/sendData";
 export default function CreateComponent({ currentPlaylist, backToPlaylist }) {
   const [image, setImage] = useState({ file: [] });
-  const [showImage, setShowImage] = useState([]);
+  const [showImage, setShowImage] = useState(null);
   const [video_details, setVideoDetails] = useState({
     video_id: v4(),
     video_caption: null,
@@ -80,7 +80,9 @@ export default function CreateComponent({ currentPlaylist, backToPlaylist }) {
               required
             ></input>
 
-            <img src={showImage ? showImage : ""}></img>
+            <img
+              src={showImage ? showImage : "/assets/blur_placeholder.jpg"}
+            ></img>
           </div>
           <div className={style.video_text}>
             <textarea

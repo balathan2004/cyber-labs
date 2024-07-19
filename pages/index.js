@@ -11,7 +11,7 @@ import React, { Component, useContext } from "react";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 export default function Home() {
   const [dirs, setDirs] = useContext(NavBarProvider);
-  //./images/logo.jpg
+  //./assets/logo.jpg
   return (
     <div className={styles.container}>
       <section className={styles.header}>
@@ -44,19 +44,19 @@ export default function Home() {
         <p> Our special domains</p>
         <div className={styles.row}>
           <div className={styles.campus_col}>
-            <img src="/images/cyber security.png" alt="" />
+            <img src="/assets/cyber security.png" alt="" />
             <div className={styles.layer}>
               <h3>CYBER SECURITY</h3>
             </div>
           </div>
           <div className={styles.campus_col}>
-            <img src="/images/ethical hacking.jpg" alt="" />
+            <img src="/assets/ethical hacking.jpg" alt="" />
             <div className={styles.layer}>
               <h3>ETHICAL HACKING</h3>
             </div>
           </div>
           <div className={styles.campus_col}>
-            <img src="/images/AI.png" alt="" />
+            <img src="/assets/AI.png" alt="" />
             <div className={styles.layer}>
               <h3>ARTIFICIAL INTELLIGENCE</h3>
             </div>
@@ -69,19 +69,19 @@ export default function Home() {
         <p>our Technical Domains.</p>
         <div className={styles.row}>
           <div className={styles.campus_col}>
-            <img src="/images/IOT.webp" alt="" />
+            <img src="/assets/IOT.webp" alt="" />
             <div className={styles.layer}>
               <h3>INTERNET OF THINGS</h3>
             </div>
           </div>
           <div className={styles.campus_col}>
-            <img src="/images/hh.png" alt="" />
+            <img src="/assets/hh.png" alt="" />
             <div className={styles.layer}>
               <h3>HARDWARE HACKING</h3>
             </div>
           </div>
           <div className={styles.campus_col}>
-            <img src="/images/london.png" alt="" />
+            <img src="/assets/london.png" alt="" />
             <div className={styles.layer}>
               <h3>DOMAIN SOOOOON...!</h3>
             </div>
@@ -94,7 +94,7 @@ export default function Home() {
 
         <div className={styles.row}>
           <div className={styles.testimonial_col}>
-            <img src="/images/domi.jpg" alt="" />
+            <img src="/assets/domi.jpg" alt="" />
             <div>
               <p>EXECUTIVE CONTROLLER</p>
               <h3>EZHILAN</h3>
@@ -106,7 +106,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.testimonial_col}>
-            <img src="/images/viki.jpg" alt="" />
+            <img src="/assets/viki.jpg" alt="" />
             <div>
               <p>EXECUTIVE SUPERVISER</p>
               <h3>VIGNESH</h3>

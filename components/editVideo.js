@@ -80,6 +80,7 @@ export function EditVideoDetails({
 
         <div className={style.video_details}>
           <div className={style.video_text}>
+            <label>Title</label>
             <textarea
               onChange={handleText}
               required
@@ -87,6 +88,7 @@ export function EditVideoDetails({
               name="video_title"
               value={video_details.video_title ? video_details.video_title : ""}
             ></textarea>
+            <label>Caption</label>
             <textarea
               onChange={handleText}
               required
@@ -96,6 +98,7 @@ export function EditVideoDetails({
                 video_details.video_caption ? video_details.video_caption : ""
               }
             ></textarea>
+            <label>Video Link</label>
             <textarea
               onChange={handleText}
               required

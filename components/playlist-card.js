@@ -19,7 +19,7 @@ export default function PlayList_Card({ playlist_data, isAdmin = true }) {
           </div>
           <div className={style.content_details}>
             <div className={style.left}>
-              <img className={style.logo} src={"/images/logo.jpg"}></img>
+              <img className={style.logo} src={"/assets/logo.jpg"}></img>
             </div>
             <div className={style.right}>
               <h1>{playlist_data.data.playlist_name}</h1>

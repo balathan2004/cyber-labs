@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
-import { useRouter, useEffect } from "next/router";
+import React, { useContext, useState, useRef } from "react";
+import { useRouter } from "next/router";
 import style from "/styles/admin.module.css";
-
+import { faMagnifyingGlass, faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PlayListVideoCard from "@/components/playlistVideoCard";
 import { NotificationProvider } from "@/pages/_app";
 import CreateComponent from "@/components/videoCreateComponent";
@@ -9,14 +10,14 @@ import SendData from "@/components/sendData";
 
 export default function Page({ data }) {
   const router = useRouter();
-
+  const searchInput = useRef(null);
   const { course_id } = router.query;
   const { playlist_info, videos } = data;
   const [notify, setNotify] = useContext(NotificationProvider);
-  console.log(playlist_info, videos);
   const [isCreate, setIsCreate] = useState(false);
+  const [clear, setClear] = useState(false);
   const [playlistVideos, setPlaylistVideos] = useState(videos ? videos : []);
-  console.log(playlistVideos);
+
   const deletePlaylist = async (course_id) => {
     const permission = confirm("Are you sure to delete this playlist");
     if (permission) {
@@ -28,32 +29,78 @@ export default function Page({ data }) {
     }
   };
 
+  const handleInput = function (event) {
+    const value = event.target.value.trim();
+    if (value) {
+      setPlaylistVideos((prev) => {
+        const newPlaylist = prev.filter((video) =>
+          video.video_title.toLowerCase().includes(value)
+        );
+        return newPlaylist;
+      });
+      setClear(true);
+    } else {
+      setClear(false);
+      setPlaylistVideos(videos);
+    }
+  };
+
+  const handleClear = () => {
+    searchInput.current.value = "";
+    setPlaylistVideos(videos);
+    setClear(false);
+  };
+
   return (
     <div className="pad_container">
       <div className={style.video_page}>
         <div className={style.playlist_details}>
-          <div>Playlist name : {playlist_info.playlist_name}</div>
-          <div>Playlist info : {playlist_info.content}</div>
+          <nav>
+            <div className={style.text}>
+              <span> name : {playlist_info.playlist_name}</span>
+              <span>{playlist_info.content}</span>
+            </div>
+            <div className={style.bar}>
+              <FontAwesomeIcon
+                className={style.search_icon}
+                icon={faMagnifyingGlass}
+              />
+              <input
+                ref={searchInput}
+                onChange={handleInput}
+                placeholder="Search video"
+              />
 
-          <button
-            className={!isCreate ? style.active_button : ""}
-            onClick={() => setIsCreate(false)}
-          >
-            PlayList
-          </button>
-          <button
-            className={isCreate ? style.active_button : ""}
-            onClick={() => setIsCreate(true)}
-          >
-            Create video
-          </button>
-          <button
-            onClick={() => {
-              deletePlaylist(course_id);
-            }}
-          >
-            Delete
-          </button>
+              {clear ? (
+                <FontAwesomeIcon
+                  onClick={handleClear}
+                  className={style.clear_icon}
+                  icon={faX}
+                />
+              ) : null}
+            </div>
+          </nav>
+          <div className={style.button_group}>
+            <button
+              className={!isCreate ? style.active_button : ""}
+              onClick={() => setIsCreate(false)}
+            >
+              Videos
+            </button>
+            <button
+              className={isCreate ? style.active_button : ""}
+              onClick={() => setIsCreate(true)}
+            >
+              Create video
+            </button>
+            <button
+              onClick={() => {
+                deletePlaylist(course_id);
+              }}
+            >
+              Delete Playlist
+            </button>
+          </div>
         </div>
         {isCreate ? (
           <CreateComponent
@@ -72,7 +119,9 @@ export default function Page({ data }) {
                 />
               ))
             ) : (
-              <h1>No video Found</h1>
+              <div className={style.empty_box}>
+                <h1>No video Found</h1>
+              </div>
             )}
           </div>
         )}

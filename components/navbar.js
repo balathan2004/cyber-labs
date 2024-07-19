@@ -40,7 +40,7 @@ export default function NavBar() {
     <nav className={currentRoute == "/" ? styles.nav : styles.nav_right}>
       {currentRoute == "/" ? (
         <a href="index.html">
-          <img src="./images/logo.jpg" alt="" />
+          <img src="./assets/logo.jpg" alt="" />
         </a>
       ) : null}
 

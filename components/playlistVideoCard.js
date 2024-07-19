@@ -11,7 +11,6 @@ export default function PlayListVideoCard({
   const url = isAdmin
     ? `/admin/courses/${course_id}/video/${video_data.video_id}`
     : `/courses/${course_id}/video/${video_data.video_id}`;
-  console.log(video_data);
 
   return (
     <a href={url} className="course_flexbox_link">
@@ -26,13 +25,12 @@ export default function PlayListVideoCard({
           </div>
           <div className={style.content_details}>
             <div className={style.left}>
-              <img className={style.logo} src={"/images/logo.jpg"}></img>
+              <img className={style.logo} src={"/assets/logo.jpg"}></img>
             </div>
             <div className={style.right}>
               <h1>{video_data.video_title}</h1>
               <div className={style.namespace}>
                 <span>Rational Cyberlabs</span>
-                <p>{video_data.caption ? video_data.caption : "nothing"}</p>
               </div>{" "}
             </div>
           </div>
@@ -41,3 +39,5 @@ export default function PlayListVideoCard({
     </a>
   );
 }
+
+//  <p>{video_data.caption ? video_data.caption : "nothing"}</p>

@@ -154,15 +154,11 @@ ADMin
   position: relative;
 }
 
-
-
 .create_playlist .thumbnail img {
   display: block;
   width: 100%;
   aspect-ratio: 16/9;
 }
-
-
 
 .create_playlist input[type="text"],
 .create_playlist textarea,
@@ -189,10 +185,9 @@ ADMin
 
 /* create video */
 
-.content   {
+.content {
   height: 100%;
   width: 100%;
-  
 }
 
 .content .video_details {
@@ -219,7 +214,6 @@ ADMin
   padding-left: 0.3rem;
 }
 
-
 .content .video_text button,
 .delete_button,
 .toggle_button,
@@ -233,12 +227,10 @@ ADMin
   cursor: pointer;
 }
 
-
 .content .hidden_input {
-position: absolute;
-z-index: -10;
-
-  }
+  position: absolute;
+  z-index: -10;
+}
 
 .delete_button {
   background-color: rgb(222, 80, 80);
@@ -360,7 +352,6 @@ z-index: -10;
 }
 
 .admin_video {
-  
   width: 100%;
   display: flex;
   gap: 2rem;
@@ -375,16 +366,27 @@ z-index: -10;
   position: relative;
 }
 
-.admin_video .edit_content form{
+.video_content h1{
+  font-size: 20px;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
 
+.admin_video .edit_content form {
+}
+
+.admin_video .edit_content form h1{
+  font-size: 20px;
+  margin: 1rem 0;
+}
+
+.admin_video .edit_content form label{
+  line-height: 40px;
 }
 
 
 
-
-
 .edit_content .video_details {
-
   height: 100%;
 }
 
@@ -407,10 +409,6 @@ z-index: -10;
   padding-left: 0.3rem;
 }
 
-
-
-
-
 .admin_video video {
   width: 100%;
 }
@@ -418,8 +416,6 @@ z-index: -10;
 .video_page .thumbnail {
   position: relative;
 }
-
-
 
 /*
   admin  video  page
@@ -439,26 +435,85 @@ z-index: -10;
   margin-top: 1rem;
 }
 
-.video_page form h1{
+.video_page form h1 {
   font-size: 25px;
 }
-
 
 .video_page .active_button {
   background-color: skyblue;
 }
 
 .video_page .playlist_details {
-text-align: center;
-
   text-transform: capitalize;
+}
+
+.video_page  .empty_box {
+  flex: 1;
+  display: flex;
+  height: 300px;
+  text-transform: capitalize;
+  background-color: rgb(128, 133, 177);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.video_page .playlist_details .button_group {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.video_page .playlist_details nav {
+  height: 75px;
+  width: 100%;
+  background-color: rgb(118, 166, 255);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.video_page .playlist_details nav .text,
+.video_page .playlist_details nav .bar {
+  flex: 1;
+}
+
+.video_page .playlist_details nav span {
+  line-height: 30px;
+  display: block;
+}
+
+.video_page .playlist_details nav .bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.video_page .playlist_details nav .bar input {
+  width: 95%;
+  height: 40px;
+  padding-left: 40px;
+  font-size: 22px;
+}
+
+.video_page .playlist_details nav .bar .search_icon , .video_page .playlist_details nav .bar .clear_icon   {
+  position: absolute;
+  font-size: 25px;
+  left: 8px;
+}
+
+.video_page .playlist_details nav .bar .clear_icon{
+  right: 40px;
+  font-size: 18px;
+  left: auto;
 }
 
 @media only screen and (max-width: 800px) {
   .admin_video {
     flex-direction: column;
     align-items: center;
-
   }
 
   .admin_video .video_content {
@@ -479,19 +534,17 @@ text-align: center;
     width: 100%;
   }
 
-  .video_page{
+  .video_page {
     width: 95%;
   }
 
-  .video_page form{
+  .video_page form {
     display: block;
   }
 
-  .admin_video .edit_content{
+  .admin_video .edit_content {
     width: 90%;
   }
-
-
 
   .create_playlist {
     left: 5%;
