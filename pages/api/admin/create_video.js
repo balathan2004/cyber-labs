@@ -22,6 +22,7 @@ const post = async (req, res) => {
     const form = new IncomingForm();
 
     form.parse(req, async (res, fields, file) => {
+      console.log(file, fields);
       var { video_title, video_caption, video_link, video_playlist, video_id } =
         fields;
       var video_details = {

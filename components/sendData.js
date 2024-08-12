@@ -10,6 +10,7 @@ export default async function SendData(
       method: "POST",
       contentType: contentType,
     });
+
     var res = await response.json();
     return res;
   } catch (error) {
