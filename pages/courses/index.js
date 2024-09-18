@@ -2,25 +2,13 @@ import Card from "@/components/card";
 import style from "/styles/course.module.css";
 import PlayList_Card from "@/components/playlist-card";
 export default function Courses({ data }) {
+  console.log(data);
   return (
     <div className="pad_container">
       <h1 className="title">Courses</h1>
-
-      <div className="course_flexbox">
-        {data.length > 0 ? (
-          data.map((item) => {
-            return (
-              <PlayList_Card
-                playlist_data={item}
-                key={item.id}
-                isAdmin={false}
-              />
-            );
-          })
-        ) : (
-          <h1>Nothing Found</h1>
-        )}
-      </div>
+      {data.map((item) => (
+        <PlayList_Card playlist_data={item} isAdmin="false" />
+      ))}
     </div>
   );
 }

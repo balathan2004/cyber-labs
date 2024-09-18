@@ -16,7 +16,12 @@ export default function Blog({ data }) {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3000/api/blog/get_posts", {
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.Vercel_URL}/api/blog/get_posts`
+      : "http://localhost:3000/api/blog/get_posts";
+
+  const response = await fetch(apiUrl, {
     method: "GET",
   });
   const res = await response.json();
