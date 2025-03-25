@@ -1,38 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CyberLabs
 
-## Getting Started
+Cyber Labs is a simple platform where admins can post courses and users can watch and interact.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **React**
+- **Next.js**
+- **Firebase**
+- **Express**
+- **Vercel** (Hosting)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- **Admin Dashboard** – Admins can create, update, and delete courses.
+- **Course Viewing** – Users can browse, watch, and interact with courses.
+- **Interactive Discussions** – Comment and engage with other users.
+- **User Authentication** – Secure login and signup using email.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## How It Works
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. **Admin Login** to create and manage courses.
+2. **User Sign-Up** to access available courses.
+3. **Browse Courses** and select the one you're interested in.
+4. **Engage** by commenting and discussing with other learners.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## About
 
-## Learn More
+- **Dev:** Light  
+- **LinkedIn:** [Link to LinkedIn](https://www.linkedin.com/in/balathan2004/)  
 
-To learn more about Next.js, take a look at the following resources:
+Cyber labs is designed to create a seamless learning experience for users while providing admins with easy management tools.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This project is licensed under the **MIT License**.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
